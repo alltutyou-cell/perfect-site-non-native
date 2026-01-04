@@ -14,7 +14,7 @@ import TeacherCollage from './components/TeacherCollage';
 import BonusSection from './components/BonusSection';
 import Objections from './components/Objections';
 import FinalCTA from './components/FinalCTA';
-import SiteHeader from './components/SiteHeader';
+
 
 const App: React.FC = () => {
   return (
@@ -33,7 +33,7 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <SiteHeader />
+
 
       <Hero />
 
