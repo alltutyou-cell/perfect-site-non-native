@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Hero from './components/Hero';
-import ProfileEvaluator from './components/ProfileEvaluator';
+
 import Testimonials from './components/Testimonials';
 import OpportunitySection from './components/OpportunitySection';
 import ProblemSolution from './components/ProblemSolution';
@@ -32,9 +32,7 @@ const App: React.FC = () => {
       <Hero />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section className="my-20">
-          <ProfileEvaluator />
-        </section>
+
 
         <Testimonials />
         <OpportunitySection />
