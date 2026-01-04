@@ -30,7 +30,7 @@ const App: React.FC = () => {
       </div>
 
       <Hero />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <section className="my-20">
           <ProfileEvaluator />
@@ -45,7 +45,7 @@ const App: React.FC = () => {
 
       <StorySection />
       <BonusSection />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Objections />
       </div>
@@ -53,14 +53,14 @@ const App: React.FC = () => {
       <FinalCTA />
 
       <footer className="bg-black text-white py-24 px-8 text-center border-t-4 border-[#FF4A22]">
-        <div className="font-dela text-4xl mb-6 tracking-tighter">NOT NATIVE.<br/>NOT SORRY.™</div>
+        <div className="font-dela text-4xl mb-6 tracking-tighter">NOT NATIVE.<br />NOT SORRY.™</div>
         <div className="flex justify-center gap-8 mb-8 grayscale opacity-50">
           <img src="https://img.icons8.com/ios-filled/50/ffffff/visa.png" className="h-8" alt="Visa" />
           <img src="https://img.icons8.com/ios-filled/50/ffffff/mastercard.png" className="h-8" alt="Mastercard" />
           <img src="https://img.icons8.com/ios-filled/50/ffffff/paypal.png" className="h-8" alt="Paypal" />
         </div>
         <p className="opacity-40 text-[10px] uppercase font-bold tracking-[0.4em]">
-          Vietnam Teaching Guide &bull; Instant Delivery &bull; 7-Day Refund Guarantee &bull; © 2024
+          Vietnam Teaching Guide &bull; Instant Delivery &bull; 7-Day Refund Guarantee &bull; © 2026
         </p>
       </footer>
     </div>
