@@ -14,9 +14,9 @@ const SiteHeader: React.FC = () => {
     return (
         <header className={`sticky top-0 z-40 w-full transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm border-b-2 border-black py-2 shadow-md' : 'bg-transparent py-4 border-b-0'}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-                {/* Logo Section */}
+                {/* Logo Section Removed */}
                 <div className="flex items-center gap-4">
-                    <img src="/photo/logo/up2u logo basic.svg" alt="UP 2U Logo" className="h-16 md:h-20 transition-all duration-300" />
+                    {/* Logo was here */}
                 </div>
 
                 {/* Right CTA */}
