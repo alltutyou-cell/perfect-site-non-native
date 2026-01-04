@@ -19,11 +19,11 @@ const App: React.FC = () => {
       <div className="bg-black text-white py-3 overflow-hidden whitespace-nowrap border-b-2 border-[#FF4A22] sticky top-0 z-50">
         <div className="inline-block animate-scroll font-dela text-[13px] tracking-wider uppercase">
           <span className="mx-4">🔥 700+ TEACHERS HIRED</span>
-          <span className="mx-4">⭐ NO ACCENT DISCRIMINATION</span>
+          <span className="mx-4">⭐ NO PASSPORT DISCRIMINATION</span>
           <span className="mx-4">💰 STARTING $1,200/MO</span>
           <span className="mx-4">🚀 NO EXPERIENCE NEEDED</span>
           <span className="mx-4">🔥 700+ TEACHERS HIRED</span>
-          <span className="mx-4">⭐ NO ACCENT DISCRIMINATION</span>
+          <span className="mx-4">⭐ NO PASSPORT DISCRIMINATION</span>
           <span className="mx-4">💰 STARTING $1,200/MO</span>
           <span className="mx-4">🚀 NO EXPERIENCE NEEDED</span>
         </div>
