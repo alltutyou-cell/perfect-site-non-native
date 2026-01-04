@@ -15,7 +15,7 @@ const Testimonials: React.FC = () => {
       time: "hired in 3 weeks",
       quote: "I sent money home to my family after just 1 month. The best job at home paid $400/month. Now I make $2,100/month teaching in HCMC.",
       highlight: "Sent $500 home",
-      image: "/photo/teachers/selim_review.jpg"
+      image: "/photo/teachers/selim_social.jpg"
     },
     {
       name: "Aziza, Turkmenistan",
