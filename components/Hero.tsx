@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <h1 className="text-6xl md:text-[120px] font-dela leading-[0.85] tracking-tighter mb-8">
+      <h1 className="text-[42px] md:text-[120px] font-dela leading-[0.9] md:leading-[0.85] tracking-tighter mb-8">
         NOT<br />
         NATIVE.<br />
         <span className="accent-text">NOT<br />SORRY.</span>

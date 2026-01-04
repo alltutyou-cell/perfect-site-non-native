@@ -18,8 +18,8 @@ const ProblemSolution: React.FC = () => {
   ];
 
   return (
-    <section className="my-24 bg-black text-white p-12 border-4 border-black card-shadow transform -rotate-1">
-      <div className="grid md:grid-cols-2 gap-16">
+    <section className="my-24 bg-black text-white p-6 md:p-12 border-4 border-black card-shadow transform md:-rotate-1">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
         <div>
           <h2 className="text-4xl font-dela mb-8 tracking-tighter accent-text">THE PROBLEM:</h2>
           <p className="text-xl font-bold mb-8">Most people do it completely wrong.</p>
@@ -36,7 +36,7 @@ const ProblemSolution: React.FC = () => {
             <p className="text-sm opacity-60 mt-2">No one teaches you which schools actually hire, what they really want, and how to position your fluency as an ASSET.</p>
           </div>
         </div>
-        <div className="bg-white text-black p-8 border-4 border-[#FF4A22] sticker-shadow translate-x-4 -translate-y-4">
+        <div className="bg-white text-black p-6 md:p-8 border-4 border-[#FF4A22] sticker-shadow md:translate-x-4 md:-translate-y-4">
           <h2 className="text-4xl font-dela mb-8 tracking-tighter">THE SOLUTION:</h2>
           <p className="text-lg font-bold mb-8 italic">What if there was a simple roadmap that showed you:</p>
           <ul className="space-y-6">

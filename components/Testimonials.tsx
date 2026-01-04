@@ -32,14 +32,14 @@ const Testimonials: React.FC = () => {
   return (
     <section className="py-24">
       <h2 className="text-4xl md:text-6xl font-dela mb-16 tracking-tighter">
-        WHAT NON-NATIVE<br/>
+        WHAT NON-NATIVE<br />
         <span className="accent-text">TEACHERS ARE SAYING</span>
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {reviews.map((rev, i) => (
-          <div key={i} className={`polaroid group hover:-translate-y-2 transition-all cursor-default ${i % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}>
+          <div key={i} className={`polaroid group hover:-translate-y-2 transition-all cursor-default w-full ${i % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}>
             <div className="bg-slate-200 aspect-square mb-4 flex items-center justify-center overflow-hidden">
-               <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${rev.name}`} alt="avatar" className="w-full h-full object-cover" />
+              <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${rev.name}`} alt="avatar" className="w-full h-full object-cover" />
             </div>
             <p className="text-sm font-bold italic mb-3 leading-snug">"{rev.quote}"</p>
             <div className="border-t-2 border-black/5 pt-3">

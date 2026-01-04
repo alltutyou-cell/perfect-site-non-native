@@ -10,16 +10,16 @@ const ToolkitSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#F8F0DD] border-4 border-black card-shadow p-12 my-24 transform rotate-1">
-      <div className="grid md:grid-cols-3 gap-12 items-center">
+    <section className="py-24 bg-[#F8F0DD] border-4 border-black card-shadow p-6 md:p-12 my-24 transform md:rotate-1">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center">
         <div className="md:col-span-1">
           <div className="bg-black text-white inline-block px-3 py-1 font-dela text-xs mb-4">THE_TOOLKIT</div>
           <h2 className="text-5xl font-dela tracking-tighter leading-none mb-6">
-            APPLICATION<br/><span className="accent-text">TOOLKIT.</span>
+            APPLICATION<br /><span className="accent-text">TOOLKIT.</span>
           </h2>
           <p className="font-bold opacity-60 italic">Included in the $19 PDF bundle.</p>
         </div>
-        
+
         <div className="md:col-span-2 grid sm:grid-cols-2 gap-6">
           {tools.map((tool, i) => (
             <div key={i} className="bg-white border-2 border-black p-6 sticker-shadow">

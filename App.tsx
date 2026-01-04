@@ -14,7 +14,7 @@ import FinalCTA from './components/FinalCTA';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white text-black selection:bg-[#FF4A22] selection:text-white">
+    <div className="min-h-screen bg-white text-black selection:bg-[#FF4A22] selection:text-white overflow-x-hidden w-full relative">
       {/* Top Black Bar Marquee */}
       <div className="bg-black text-white py-3 overflow-hidden whitespace-nowrap border-b-2 border-[#FF4A22] sticky top-0 z-50">
         <div className="inline-block animate-scroll font-dela text-[13px] tracking-wider uppercase">
