@@ -4,7 +4,7 @@ const Objections: React.FC = () => {
   const faqs = [
     {
       q: "BUT I HAVE AN ACCENT...",
-      a: "So do 650+ teachers we've placed. Vietnamese schools don't expect you to sound like a BBC news anchor. They want you to speak clearly and confidently. We've placed teachers with Russian, Colombian, Polish, Tunisian, and Filipino accents.",
+      a: "So do 700+ teachers we've placed. Vietnamese schools don't expect you to sound like a BBC news anchor. They want you to speak clearly and confidently. We've placed teachers with Russian, Colombian, Polish, Tunisian, and Filipino accents.",
       icon: "🗣️"
     },
     {
