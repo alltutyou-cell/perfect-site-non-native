@@ -10,7 +10,7 @@ const StorySection: React.FC = () => {
             <div className="inline-block bg-black text-white font-dela text-xs px-3 py-1 mb-8">CASE_STUDY_01</div>
             <h2 className="text-4xl md:text-5xl font-dela mb-12 tracking-tighter leading-tight">
               SELIM FROM TUNISIA:<br />
-              <span className="accent-text">BROKE GRADUATE TO $2,100/MO</span>
+              <span className="accent-text">BROKE GRADUATE TO $2,100/MONTH</span>
             </h2>
 
             <div className="prose prose-xl font-bold leading-relaxed space-y-6 text-black/80">

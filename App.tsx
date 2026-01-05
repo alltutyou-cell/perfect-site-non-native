@@ -26,11 +26,11 @@ const App: React.FC = () => {
         <div className="inline-block animate-scroll font-dela text-[13px] tracking-wider uppercase">
           <span className="mx-4">🔥 700+ TEACHERS HIRED</span>
           <span className="mx-4">⭐ NO PASSPORT DISCRIMINATION</span>
-          <span className="mx-4">💰 STARTING $1,200/MO</span>
+          <span className="mx-4">💰 STARTING $1,200/MONTH</span>
           <span className="mx-4">🚀 NO EXPERIENCE NEEDED</span>
           <span className="mx-4">🔥 700+ TEACHERS HIRED</span>
           <span className="mx-4">⭐ NO PASSPORT DISCRIMINATION</span>
-          <span className="mx-4">💰 STARTING $1,200/MO</span>
+          <span className="mx-4">💰 STARTING $1,200/MONTH</span>
           <span className="mx-4">🚀 NO EXPERIENCE NEEDED</span>
         </div>
       </div>

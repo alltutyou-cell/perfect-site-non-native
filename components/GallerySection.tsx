@@ -46,7 +46,7 @@ const GallerySection: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 text-center">
                 <div className="inline-block bg-[#FF4A22] text-white font-dela text-xs px-3 py-1 mb-8">LIFE_IN_VIETNAM</div>
                 <h2 className="text-5xl md:text-7xl font-dela mb-12 tracking-tighter uppercase leading-none">
-                    THE $2,100/MO<br />
+                    THE $2,100/MONTH<br />
                     <span className="accent-text italic">LIFESTYLE.</span>
                 </h2>
                 <p className="max-w-2xl mx-auto font-bold text-xl mb-16 text-black/60">
