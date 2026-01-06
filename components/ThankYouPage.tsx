@@ -112,8 +112,16 @@ const ThankYouPage: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Section 5: Final Message */}
-                <div className="text-center py-12">
+                {/* Section 5: Branding Quote */}
+                <div className="text-center mb-24 mt-12">
+                    <div className="font-dela text-[40px] md:text-[80px] leading-[0.8] tracking-tighter uppercase">
+                        NOT NATIVE.<br />
+                        <span className="accent-text">NOT SORRY.™</span>
+                    </div>
+                </div>
+
+                {/* Section 6: Final Message */}
+                <div className="text-center py-12 border-t-4 border-black border-dashed">
                     <h2 className="font-dela text-4xl mb-6 leading-none tracking-tighter uppercase">
                         YOU MADE A <br />
                         <span className="accent-text italic">SMART DECISION.</span>
