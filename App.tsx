@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Hero from './components/Hero';
 import ExpertSection from './components/ExpertSection';
 import Testimonials from './components/Testimonials';
@@ -14,34 +14,26 @@ import Objections from './components/Objections';
 import FinalCTA from './components/FinalCTA';
 import SiteFooter from './components/SiteFooter';
 import StickyBottomNav from './components/StickyBottomNav';
-import CheckoutPage from './components/CheckoutPage';
+import ThankYouPage from './components/ThankYouPage';
 
 const App: React.FC = () => {
-  const [showCheckout, setShowCheckout] = useState(false);
+  const [path, setPath] = useState(window.location.pathname);
 
-  if (showCheckout) {
-    return (
-      <>
-        <CheckoutPage />
-        <button
-          onClick={() => setShowCheckout(false)}
-          className="fixed bottom-4 left-4 bg-black text-white px-4 py-2 font-dela text-[10px] z-[100] sticker-shadow border-2 border-white"
-        >
-          ← BACK TO LANDING
-        </button>
-      </>
-    );
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setPath(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
+  if (path === '/thankyou' || path === '/thank-you') {
+    return <ThankYouPage />;
   }
 
   return (
     <div className="min-h-screen bg-white text-black selection:bg-[#FF4A22] selection:text-white overflow-x-hidden w-full relative">
-      <button
-        onClick={() => setShowCheckout(true)}
-        className="fixed top-4 right-4 bg-black text-white px-4 py-2 font-dela text-[10px] z-[100] sticker-shadow border-2 border-white opacity-20 hover:opacity-100 transition-opacity"
-      >
-        PREVIEW CHECKOUT →
-      </button>
-
       {/* Top Black Bar Marquee */}
       <div className="bg-black text-white py-3 overflow-hidden whitespace-nowrap border-b-2 border-[#FF4A22] relative z-50">
         <div className="inline-block animate-scroll font-dela text-[13px] tracking-wider uppercase">
