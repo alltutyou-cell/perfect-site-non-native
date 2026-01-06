@@ -15,8 +15,8 @@ const ThankYouPage: React.FC = () => {
                 </div>
 
                 {/* Section 1: Confirmation */}
-                <div className="bg-white border-4 border-black p-8 md:p-12 card-shadow mb-12 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-[#FF4A22] text-white px-4 py-1 font-dela text-xs rotate-[5deg] translate-x-2 -translate-y-2 sticker-shadow">
+                <div className="bg-white border-4 border-black p-8 md:p-12 card-shadow mb-12 relative">
+                    <div className="absolute top-0 right-0 bg-[#FF4A22] text-white px-6 py-2 font-dela text-sm rotate-[4deg] translate-x-4 -translate-y-4 sticker-shadow z-20">
                         SUCCESS!
                     </div>
                     <h1 className="text-4xl md:text-6xl font-dela mb-8 tracking-tighter leading-tight">
