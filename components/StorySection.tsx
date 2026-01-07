@@ -8,7 +8,7 @@ const StorySection: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
             <div className="inline-block bg-black text-white font-dela text-xs px-3 py-1 mb-8">CASE_STUDY_01</div>
-            <h2 className="text-4xl md:text-5xl font-dela mb-12 tracking-tighter leading-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-dela mb-12 tracking-tighter leading-tight">
               SELIM FROM TUNISIA:<br />
               <span className="accent-text">BROKE GRADUATE TO $2,100/MONTH</span>
             </h2>

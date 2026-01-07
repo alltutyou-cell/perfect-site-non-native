@@ -28,7 +28,7 @@ const ActionPlanSection: React.FC = () => {
   return (
     <section className="py-24">
       <div className="mb-16">
-        <h2 className="text-4xl md:text-8xl font-dela tracking-tighter leading-none mb-4">
+        <h2 className="text-3xl sm:text-6xl md:text-8xl font-dela tracking-tighter leading-none mb-4">
           YOUR <span className="accent-text">30-DAY</span><br />ACTION PLAN
         </h2>
         <p className="font-bold text-xl opacity-60">SO YOU KNOW EXACTLY WHAT TO DO NEXT.</p>

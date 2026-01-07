@@ -34,7 +34,7 @@ const TeacherCollage: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4">
                 <div className="text-center mb-16">
                     <div className="inline-block bg-black text-white font-dela text-xs px-3 py-1 mb-6 uppercase">The Teachers</div>
-                    <h2 className="text-5xl md:text-7xl font-dela text-white mb-4 tracking-tighter uppercase leading-none">
+                    <h2 className="text-3xl sm:text-5xl md:text-7xl font-dela text-white mb-4 tracking-tighter uppercase leading-none">
                         OUR GROWING<br />
                         <span className="italic underline decoration-black decoration-8 underline-offset-8">FAMILY.</span>
                     </h2>
@@ -47,9 +47,8 @@ const TeacherCollage: React.FC = () => {
                     {photos.map((photo, index) => (
                         <div
                             key={index}
-                            className={`relative group card-shadow border-4 border-black bg-white p-3 transform transition-all duration-300 hover:scale-105 hover:rotate-0 hover:z-50 ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'
+                            className={`relative group card-shadow border-4 border-black bg-white p-3 transform transition-all duration-300 hover:scale-105 hover:rotate-0 hover:z-50 w-full max-w-[320px] ${index % 2 === 0 ? 'rotate-2' : '-rotate-2'
                                 } ${index % 3 === 0 ? 'md:rotate-3' : ''}`}
-                            style={{ width: '320px' }}
                         >
                             <div className="aspect-[4/5] overflow-hidden border-2 border-black mb-2 bg-gray-100">
                                 <img
