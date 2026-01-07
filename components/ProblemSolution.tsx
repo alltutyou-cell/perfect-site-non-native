@@ -48,9 +48,9 @@ const ProblemSolution: React.FC = () => {
             ))}
           </ul>
           <div className="mt-10">
-            <div className="bg-black text-white p-4 font-dela text-center text-sm">
+            <a href="https://up2uagency.systeme.io/checkout" className="block bg-black text-white p-4 font-dela text-center text-sm hover:bg-[#FF4A22] transition-colors">
               THAT'S WHAT THIS GUIDE IS.
-            </div>
+            </a>
           </div>
         </div>
       </div>
