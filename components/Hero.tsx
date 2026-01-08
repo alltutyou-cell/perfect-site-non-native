@@ -10,9 +10,14 @@ const Hero: React.FC = () => {
             VIETNAM EDITION 2026
           </div>
           {window.location.search.includes('loc=') && (
-            <div className="slanted-badge bg-black text-white sticker-shadow">
-              {window.location.search.includes('name=') && `${new URLSearchParams(window.location.search).get('name')?.toUpperCase()}! `}
-              WELCOME {new URLSearchParams(window.location.search).get('loc')?.toUpperCase()} TEACHER 🌏
+            <div className="slanted-badge bg-black text-white sticker-shadow uppercase text-[10px] md:text-xs">
+              {(() => {
+                const params = new URLSearchParams(window.location.search);
+                const name = params.get('name');
+                const loc = params.get('loc');
+                if (name) return `WELCOME ${name}, TEACHER FROM ${loc} 🌏`;
+                return `WELCOME TO THE ${loc} EDITION 🌏`;
+              })()}
             </div>
           )}
         </div>
