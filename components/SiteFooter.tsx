@@ -8,8 +8,16 @@ const SiteFooter: React.FC = () => {
                 {/* Minimalist Logo + Slogan */}
                 <div className="flex flex-col items-center mb-8">
                     <img src="/photo/logo/up2u logo basic.svg" alt="Up 2U Logo" className="h-8 invert opacity-50 mb-4" />
-                    <div className="font-dela text-xs tracking-[0.2em] opacity-30 uppercase">
+                    <div className="font-dela text-xs tracking-[0.2em] opacity-30 uppercase mb-4">
                         NOT NATIVE. NOT SORRY.™
+                    </div>
+                    <div className="flex gap-4 opacity-30">
+                        <a href="https://www.instagram.com/up2u.go/" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" className="w-5 h-5" alt="Instagram" />
+                        </a>
+                        <a href="https://www.youtube.com/@up2u.agency" target="_blank" rel="noopener noreferrer" className="hover:opacity-100 transition-opacity">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" className="w-5 h-5" alt="YouTube" />
+                        </a>
                     </div>
                 </div>
 

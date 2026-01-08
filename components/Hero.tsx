@@ -35,9 +35,19 @@ const Hero: React.FC = () => {
               +700
             </div>
           </div>
-          <p className="text-sm font-bold opacity-80 max-w-[150px] leading-tight text-left">
-            Non-native teachers hired in Vietnam
-          </p>
+          <div className="flex flex-col text-left">
+            <p className="text-sm font-bold opacity-80 max-w-[150px] leading-tight mb-2">
+              Non-native teachers hired in Vietnam
+            </p>
+            <div className="flex gap-3">
+              <a href="https://www.instagram.com/up2u.go/" target="_blank" rel="noopener noreferrer" className="opacity-40 hover:opacity-100 transition-opacity">
+                <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" className="w-5 h-5" alt="Instagram" />
+              </a>
+              <a href="https://www.youtube.com/@up2u.agency" target="_blank" rel="noopener noreferrer" className="opacity-40 hover:opacity-100 transition-opacity">
+                <img src="https://img.icons8.com/ios-filled/50/000000/youtube-play.png" className="w-5 h-5" alt="YouTube" />
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="mt-8">
