@@ -7,11 +7,34 @@ const QuizPage: React.FC = () => {
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [analysisText, setAnalysisText] = useState('Syncing with Vietnam local school database...');
     const [email, setEmail] = useState('');
+    const [locationData, setLocationData] = useState({
+        country: '',
+        city: '',
+        ip: ''
+    });
+
     const [answers, setAnswers] = useState({
         degree: '',
         fluency: '',
         experience: ''
     });
+
+    useEffect(() => {
+        // Fetch location data silently on mount
+        fetch('https://ipapi.co/json/')
+            .then(res => res.json())
+            .then(data => {
+                setLocationData({
+                    country: data.country_name || '',
+                    city: data.city || '',
+                    ip: data.ip || ''
+                });
+            })
+            .catch(() => {
+                // Fail silently
+                console.log("Location detection bypassed.");
+            });
+    }, []);
 
     const totalSteps = 4; // degree, fluency, experience, email
 
@@ -26,11 +49,11 @@ const QuizPage: React.FC = () => {
     const startAnalysis = () => {
         setIsAnalyzing(true);
         const steps = [
+            `Detected location: ${locationData.city || 'Checking IP'}...`,
             "Syncing with local school databases...",
-            "Checking non-native hiring quotas for 2026...",
-            "Analyzing accent-to-market compatibility...",
-            "Calculating potential salary in VND...",
-            "Verifying visa route eligibility...",
+            `Checking hiring quotas for ${locationData.country || 'International'} applicants...`,
+            "Analyzing proficiency-to-salary ratio...",
+            "Calculating visa route eligibility...",
             "SUCCESS: RESULTS READY."
         ];
 
@@ -49,8 +72,19 @@ const QuizPage: React.FC = () => {
 
     const handleFinish = (e: React.FormEvent) => {
         e.preventDefault();
+        // Pack all data for CRM/Lead capture
+        const leadData = {
+            email,
+            ...answers,
+            location: locationData.country,
+            city: locationData.city,
+            ip: locationData.ip
+        };
+
+        console.log('CRM Data Captured:', leadData);
+
         // Post redirect
-        window.location.href = '/guide?captured=true';
+        window.location.href = `/guide?captured=true&loc=${encodeURIComponent(locationData.country || 'Global')}`;
     };
 
     return (

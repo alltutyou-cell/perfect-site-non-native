@@ -5,8 +5,15 @@ const Hero: React.FC = () => {
   return (
     <section className="pt-0 pb-4 px-4 max-w-5xl mx-auto text-center md:text-left relative">
       <div className="mb-2">
-        <div className="slanted-badge bg-[#FF4A22] text-white sticker-shadow mt-4 mb-2">
-          VIETNAM EDITION 2026
+        <div className="flex flex-wrap gap-2 mt-4 mb-2">
+          <div className="slanted-badge bg-[#FF4A22] text-white sticker-shadow">
+            VIETNAM EDITION 2026
+          </div>
+          {window.location.search.includes('loc=') && (
+            <div className="slanted-badge bg-black text-white sticker-shadow">
+              WELCOME {new URLSearchParams(window.location.search).get('loc')?.toUpperCase()} TEACHER 🌏
+            </div>
+          )}
         </div>
       </div>
 
