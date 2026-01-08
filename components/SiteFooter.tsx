@@ -25,8 +25,6 @@ const SiteFooter: React.FC = () => {
                 <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-8 font-bold uppercase text-[9px] tracking-widest text-gray-500">
                     <a href="https://up2uagency.systeme.io/checkout" className="hover:text-[#FF4A22] transition-all">Guide</a>
                     <span className="opacity-20">•</span>
-                    <a href="#stories" className="hover:text-[#FF4A22] transition-all">Stories</a>
-                    <span className="opacity-20">•</span>
                     <a href="/privacy" className="hover:text-[#FF4A22] transition-all">Privacy</a>
                     <span className="opacity-20">•</span>
                     <a href="/refunds" className="hover:text-[#FF4A22] transition-all">Refunds</a>
