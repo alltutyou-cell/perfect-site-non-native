@@ -39,28 +39,24 @@ const GuideMockup: React.FC = () => {
                         </a>
                     </div>
 
-                    <div className="relative reveal-on-scroll">
-                        {/* Background stack/blur effects */}
-                        <div className="absolute top-10 left-10 w-full h-full bg-slate-100 border-2 border-black -z-10 transform rotate-3 blur-[2px] opacity-40"></div>
-                        <div className="absolute top-5 left-5 w-full h-full bg-slate-200 border-2 border-black -z-10 transform -rotate-1 blur-[1px] opacity-60"></div>
+                    <div className="relative flex justify-center items-center reveal-on-scroll">
+                        {/* Clean background glow instead of muddy paper stack */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#FF4A22] rounded-full mix-blend-multiply filter blur-[120px] opacity-10"></div>
 
-                        {/* Main Mockup Image */}
+                        {/* Main Mockup Image with clean sharp borders */}
                         <motion.div
-                            whileHover={{ scale: 1.02, rotate: 0 }}
-                            className="relative z-10 border-4 border-black card-shadow overflow-hidden transform -rotate-2 transition-transform"
+                            whileHover={{ scale: 1.05, rotate: 0 }}
+                            className="relative z-10 p-2 bg-white border-2 border-black card-shadow transform -rotate-1 transition-transform max-w-sm md:max-w-md"
                         >
                             <img
                                 src="/photo/guide_mockup.jpg"
                                 alt="Not Native Not Sorry - The definitive guide for non-native English teachers in Vietnam"
-                                className="w-full h-auto"
+                                className="w-full h-auto block"
                             />
-
-                            {/* Marker Flourishes */}
-                            <div className="absolute bottom-10 right-[-20%] w-[150%] h-12 bg-yellow-400 opacity-20 transform -rotate-45 pointer-events-none"></div>
                         </motion.div>
 
-                        {/* Floating Badge */}
-                        <div className="absolute -top-6 -right-6 bg-black text-white p-4 rotate-12 font-dela text-xs sticker-shadow z-20">
+                        {/* Floating Badge - repositioned for clarity */}
+                        <div className="absolute -top-4 -right-2 md:right-4 bg-black text-white px-4 py-3 rotate-12 font-dela text-[10px] md:text-xs sticker-shadow z-20">
                             DIGITAL VERSION <br /> 2026 EDITION
                         </div>
                     </div>
