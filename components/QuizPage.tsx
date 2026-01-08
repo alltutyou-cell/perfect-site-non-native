@@ -10,7 +10,8 @@ import {
     Globe,
     MessageSquare,
     Briefcase,
-    Search
+    Search,
+    Instagram
 } from 'lucide-react';
 
 const COMMON_COUNTRIES = [
@@ -26,6 +27,7 @@ const QuizPage: React.FC = () => {
     const [analysisText, setAnalysisText] = useState('Syncing with Vietnam local school database...');
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
+    const [instagram, setInstagram] = useState('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -91,6 +93,19 @@ const QuizPage: React.FC = () => {
 
     const handleFinish = (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Pack all data for Kommo CRM / Webhook
+        const leadData = {
+            firstName,
+            email,
+            instagram,
+            ...answers,
+            source: 'Instagram Quiz',
+            timestamp: new Date().toISOString()
+        };
+
+        console.log('Pushing to Kommo CRM:', leadData);
+
         const loc = encodeURIComponent(answers.nationality || 'Global');
         const name = encodeURIComponent(firstName);
         window.location.href = `/guide?captured=true&loc=${loc}&name=${name}`;
@@ -345,23 +360,36 @@ const QuizPage: React.FC = () => {
                                         </div>
 
                                         <form onSubmit={handleFinish} className="space-y-4">
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <input
-                                                    type="text"
-                                                    placeholder="First Name"
-                                                    required
-                                                    value={firstName}
-                                                    onChange={(e) => setFirstName(e.target.value)}
-                                                    className="w-full px-4 py-5 border-2 border-black font-bold focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all text-center text-lg"
-                                                />
-                                                <input
-                                                    type="email"
-                                                    placeholder="Best Email Address"
-                                                    required
-                                                    value={email}
-                                                    onChange={(e) => setEmail(e.target.value)}
-                                                    className="w-full px-4 py-5 border-2 border-black font-bold focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all text-center text-lg"
-                                                />
+                                            <div className="space-y-4">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="First Name"
+                                                        required
+                                                        value={firstName}
+                                                        onChange={(e) => setFirstName(e.target.value)}
+                                                        className="w-full px-4 py-5 border-2 border-black font-bold focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all text-center text-lg"
+                                                    />
+                                                    <input
+                                                        type="email"
+                                                        placeholder="Best Email Address"
+                                                        required
+                                                        value={email}
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        className="w-full px-4 py-5 border-2 border-black font-bold focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all text-center text-lg"
+                                                    />
+                                                </div>
+
+                                                <div className="relative">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="Instagram @handle (for results DM)"
+                                                        value={instagram}
+                                                        onChange={(e) => setInstagram(e.target.value)}
+                                                        className="w-full px-4 py-5 border-2 border-black font-bold focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all text-center text-lg pl-12"
+                                                    />
+                                                    <Instagram className="absolute left-6 top-1/2 -translate-y-1/2 opacity-30" size={24} />
+                                                </div>
                                             </div>
                                             <button
                                                 type="submit"
