@@ -21,7 +21,7 @@ import TermsOfService from './components/TermsOfService';
 import Guarantee from './components/Guarantee';
 import WhatsAppButton from './components/WhatsAppButton';
 import GuideMockup from './components/GuideMockup';
-import LeadMagnet from './components/LeadMagnet';
+import QuizPage from './components/QuizPage';
 
 const App: React.FC = () => {
   const [path, setPath] = useState(window.location.pathname);
@@ -51,6 +51,10 @@ const App: React.FC = () => {
       revealElements.forEach(el => observer.unobserve(el));
     };
   }, [path]);
+
+  if (path === '/') {
+    return <QuizPage />;
+  }
 
   if (path === '/thankyou' || path === '/thank-you') {
     return <ThankYouPage />;
@@ -105,10 +109,6 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="reveal-on-scroll"><Guarantee /></div>
           <div className="reveal-on-scroll"><Objections /></div>
-        </div>
-
-        <div className="reveal-on-scroll">
-          <LeadMagnet />
         </div>
       </main>
 
