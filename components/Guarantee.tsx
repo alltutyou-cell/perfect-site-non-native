@@ -7,9 +7,9 @@ const Guarantee: React.FC = () => {
         <section className="py-24 bg-white border-y-4 border-black">
             <div className="max-w-4xl mx-auto px-4 text-center">
                 <div className="relative inline-block mb-12">
-                    <div className="bg-[#FF4A22] text-white p-6 md:p-10 rounded-full sticker-shadow transform -rotate-3 hover:rotate-0 transition-transform duration-300 flex flex-col items-center justify-center">
-                        <ShieldCheck size={48} className="mb-2" />
-                        <span className="font-dela text-2xl md:text-3xl tracking-tighter leading-none">100%<br />SECURE</span>
+                    <div className="bg-[#FF4A22] text-white p-5 md:p-10 rounded-full sticker-shadow transform -rotate-3 hover:rotate-0 transition-transform duration-300 flex flex-col items-center justify-center">
+                        <ShieldCheck className="w-8 h-8 md:w-12 md:h-12 mb-2" />
+                        <span className="font-dela text-xl md:text-3xl tracking-tighter leading-none">100%<br />SECURE</span>
                     </div>
                     {/* Hand-drawn arrow SVG flair */}
                     <svg className="absolute -right-24 top-0 w-24 h-24 text-black hidden md:block" viewBox="0 0 100 100" fill="none">
@@ -17,9 +17,9 @@ const Guarantee: React.FC = () => {
                     </svg>
                 </div>
 
-                <h2 className="text-4xl md:text-6xl font-dela mb-8 tracking-tighter leading-none">
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-dela mb-8 tracking-tighter leading-none">
                     THE IRON-CLAD<br />
-                    <span className="accent-text whitespace-nowrap">7-DAY GUARANTEE</span>
+                    <span className="accent-text">7-DAY GUARANTEE</span>
                 </h2>
 
                 <div className="prose prose-xl mx-auto font-bold leading-relaxed text-black/80 space-y-6">
