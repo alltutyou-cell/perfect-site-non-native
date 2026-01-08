@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, Minus } from 'lucide-react';
 
 const Objections: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   const faqs = [
     {
       q: "BUT I HAVE AN ACCENT...",
@@ -23,35 +27,54 @@ const Objections: React.FC = () => {
     <section className="py-24 relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-20 right-20 w-64 h-64 bg-[#FF4A22] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-blob"></div>
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-blob animation-delay-2000"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block transform -rotate-2 mb-4">
-            <span className="bg-[#FF4A22] text-white px-4 py-1 font-dela text-sm uppercase tracking-wider sticker-shadow">No Experience? No Problem.</span>
+            <span className="bg-[#FF4A22] text-white px-4 py-1 font-dela text-sm uppercase tracking-wider sticker-shadow text-center">No Experience? No Problem.</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-dela mb-6 tracking-tighter uppercase">
+          <h2 className="text-4xl md:text-6xl font-dela mb-6 tracking-tighter uppercase text-center">
             IS THIS RIGHT FOR YOU?
           </h2>
-          <p className="text-xl font-bold max-w-2xl mx-auto text-gray-600">
-            Let's address the elephant in the room. Here's why you don't need to worry.
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="space-y-4">
           {faqs.map((f, i) => (
             <div
               key={i}
-              className="bg-white border-4 border-black p-8 sticker-shadow hover:-translate-y-2 hover:shadow-[12px_12px_0px_#FF4A22] transition-all duration-300 flex flex-col h-full relative group"
+              className="bg-white border-4 border-black sticker-shadow overflow-hidden transition-all duration-300"
             >
-              <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-300 w-fit">
-                {f.icon}
-              </div>
-              <h3 className="font-dela text-xl mb-4 accent-text leading-tight">{f.q}</h3>
-              <p className="text-base font-bold leading-relaxed">{f.a}</p>
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className="w-full text-left p-6 md:p-8 flex items-center justify-between group"
+              >
+                <div className="flex items-center gap-6">
+                  <span className="text-3xl hidden sm:block">{f.icon}</span>
+                  <h3 className="font-dela text-lg md:text-xl accent-text hover:text-black transition-colors leading-tight">
+                    {f.q}
+                  </h3>
+                </div>
+                <div className="ml-4 flex-shrink-0 bg-black text-white p-1 rounded-sm">
+                  {openIndex === i ? <Minus size={20} /> : <Plus size={20} />}
+                </div>
+              </button>
 
-              {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-0 h-0 border-t-[20px] border-r-[20px] border-t-transparent border-r-black opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    <div className="px-6 pb-8 md:px-8 md:pb-10 md:ml-12 border-t-2 border-black/5 pt-6">
+                      <p className="text-lg font-bold leading-relaxed text-black/80">
+                        {f.a}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
@@ -61,3 +84,4 @@ const Objections: React.FC = () => {
 };
 
 export default Objections;
+

@@ -15,6 +15,10 @@ import FinalCTA from './components/FinalCTA';
 import SiteFooter from './components/SiteFooter';
 import StickyBottomNav from './components/StickyBottomNav';
 import ThankYouPage from './components/ThankYouPage';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import RefundPolicy from './components/RefundPolicy';
+import TermsOfService from './components/TermsOfService';
+import Guarantee from './components/Guarantee';
 
 const App: React.FC = () => {
   const [path, setPath] = useState(window.location.pathname);
@@ -25,11 +29,40 @@ const App: React.FC = () => {
     };
 
     window.addEventListener('popstate', handleLocationChange);
-    return () => window.removeEventListener('popstate', handleLocationChange);
-  }, []);
+
+    // Intersection Observer for scroll animations
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    revealElements.forEach(el => observer.observe(el));
+
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      revealElements.forEach(el => observer.unobserve(el));
+    };
+  }, [path]);
 
   if (path === '/thankyou' || path === '/thank-you') {
     return <ThankYouPage />;
+  }
+
+  if (path === '/privacy') {
+    return <PrivacyPolicy />;
+  }
+
+  if (path === '/refunds') {
+    return <RefundPolicy />;
+  }
+
+  if (path === '/terms') {
+    return <TermsOfService />;
   }
 
   return (
@@ -51,21 +84,22 @@ const App: React.FC = () => {
       <Hero />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Testimonials />
-        <OpportunitySection />
-        <ProblemSolution />
-        <ActionPlanSection />
-        <ToolkitSection />
-        <ExpertSection />
+        <div className="reveal-on-scroll"><Testimonials /></div>
+        <div className="reveal-on-scroll"><OpportunitySection /></div>
+        <div className="reveal-on-scroll"><ProblemSolution /></div>
+        <div className="reveal-on-scroll"><ActionPlanSection /></div>
+        <div className="reveal-on-scroll"><ToolkitSection /></div>
+        <div className="reveal-on-scroll"><ExpertSection /></div>
       </div>
 
-      <StorySection />
-      <GallerySection />
-      <TeacherCollage />
-      <BonusSection />
+      <div className="reveal-on-scroll"><StorySection /></div>
+      <div className="reveal-on-scroll"><GallerySection /></div>
+      <div className="reveal-on-scroll"><TeacherCollage /></div>
+      <div className="reveal-on-scroll"><BonusSection /></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Objections />
+        <div className="reveal-on-scroll"><Guarantee /></div>
+        <div className="reveal-on-scroll"><Objections /></div>
       </div>
 
       <FinalCTA />
