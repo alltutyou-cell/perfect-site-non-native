@@ -4,6 +4,7 @@ import {
     ChevronRight,
     ArrowRight,
     CheckCircle2,
+    XCircle,
     Loader2,
     GraduationCap,
     Globe,
@@ -298,18 +299,42 @@ const QuizPage: React.FC = () => {
                                             <div className="absolute -top-3 left-4 bg-black text-white text-[10px] font-dela px-2 py-1 uppercase tracking-widest">
                                                 Your Profile Summary
                                             </div>
-                                            <div className="grid grid-cols-2 gap-y-3 font-bold text-xs uppercase tracking-tight">
-                                                <div className="opacity-40">University Degree:</div>
-                                                <div className="text-right">{answers.degree === 'yes' ? '✅ COMPLETED' : '❌ NONE'}</div>
+                                            <div className="grid grid-cols-2 gap-y-4 font-bold text-[10px] md:text-xs uppercase tracking-tight">
+                                                <div className="opacity-40 flex items-center gap-2">
+                                                    <GraduationCap size={14} className="text-[#FF4A22]" /> Degree:
+                                                </div>
+                                                <div className="text-right flex items-center justify-end gap-1.5">
+                                                    {answers.degree === 'yes' ? (
+                                                        <><CheckCircle2 size={14} className="text-green-600" /> COMPLETED</>
+                                                    ) : (
+                                                        <><XCircle size={14} className="text-red-500" /> NONE</>
+                                                    )}
+                                                </div>
 
-                                                <div className="opacity-40">Passport Country:</div>
-                                                <div className="text-right">{answers.nationality.toUpperCase()}</div>
+                                                <div className="opacity-40 flex items-center gap-2">
+                                                    <Globe size={14} className="text-[#FF4A22]" /> Passport:
+                                                </div>
+                                                <div className="text-right truncate ml-4" title={answers.nationality.toUpperCase()}>
+                                                    {answers.nationality.toUpperCase()}
+                                                </div>
 
-                                                <div className="opacity-40">English Level:</div>
-                                                <div className="text-right">{answers.fluency === 'native' ? '🗣️ NATIVE-LIKE' : '📈 INTERMEDIATE'}</div>
+                                                <div className="opacity-40 flex items-center gap-2">
+                                                    <MessageSquare size={14} className="text-[#FF4A22]" /> English:
+                                                </div>
+                                                <div className="text-right">
+                                                    {answers.fluency === 'native' ? 'NATIVE-LIKE' : 'INTERMEDIATE'}
+                                                </div>
 
-                                                <div className="opacity-40">Experience:</div>
-                                                <div className="text-right">{answers.experience === 'yes' ? '💼 YES' : '🆕 NO'}</div>
+                                                <div className="opacity-40 flex items-center gap-2">
+                                                    <Briefcase size={14} className="text-[#FF4A22]" /> Experience:
+                                                </div>
+                                                <div className="text-right flex items-center justify-end gap-1.5">
+                                                    {answers.experience === 'yes' ? (
+                                                        <><CheckCircle2 size={14} className="text-green-600" /> YES</>
+                                                    ) : (
+                                                        <><XCircle size={14} className="text-gray-400" /> NO</>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
 
