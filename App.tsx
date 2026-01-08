@@ -19,6 +19,8 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import RefundPolicy from './components/RefundPolicy';
 import TermsOfService from './components/TermsOfService';
 import Guarantee from './components/Guarantee';
+import WhatsAppButton from './components/WhatsAppButton';
+import GuideMockup from './components/GuideMockup';
 
 const App: React.FC = () => {
   const [path, setPath] = useState(window.location.pathname);
@@ -86,6 +88,7 @@ const App: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="reveal-on-scroll"><Testimonials /></div>
         <div className="reveal-on-scroll"><OpportunitySection /></div>
+        <div className="reveal-on-scroll"><GuideMockup /></div>
         <div className="reveal-on-scroll"><ProblemSolution /></div>
         <div className="reveal-on-scroll"><ActionPlanSection /></div>
         <div className="reveal-on-scroll"><ToolkitSection /></div>
@@ -105,6 +108,7 @@ const App: React.FC = () => {
       <FinalCTA />
       <SiteFooter />
       <StickyBottomNav />
+      <WhatsAppButton />
     </div>
   );
 };
