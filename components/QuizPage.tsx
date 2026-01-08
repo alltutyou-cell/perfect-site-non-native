@@ -294,9 +294,28 @@ const QuizPage: React.FC = () => {
                                     </div>
 
                                     <div className="space-y-6">
+                                        <div className="bg-slate-50 border-2 border-black p-6 rounded-none relative">
+                                            <div className="absolute -top-3 left-4 bg-black text-white text-[10px] font-dela px-2 py-1 uppercase tracking-widest">
+                                                Your Profile Summary
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-y-3 font-bold text-xs uppercase tracking-tight">
+                                                <div className="opacity-40">University Degree:</div>
+                                                <div className="text-right">{answers.degree === 'yes' ? '✅ COMPLETED' : '❌ NONE'}</div>
+
+                                                <div className="opacity-40">Passport Country:</div>
+                                                <div className="text-right">{answers.nationality.toUpperCase()}</div>
+
+                                                <div className="opacity-40">English Level:</div>
+                                                <div className="text-right">{answers.fluency === 'native' ? '🗣️ NATIVE-LIKE' : '📈 INTERMEDIATE'}</div>
+
+                                                <div className="opacity-40">Experience:</div>
+                                                <div className="text-right">{answers.experience === 'yes' ? '💼 YES' : '🆕 NO'}</div>
+                                            </div>
+                                        </div>
+
                                         <div className="p-4 bg-orange-50 border-2 border-[#FF4A22] border-dashed rounded-lg">
-                                            <p className="font-bold text-sm leading-relaxed text-center italic">
-                                                We've generated a <strong>Local Marketplace Report</strong> specifically for {answers.nationality} teachers.
+                                            <p className="font-bold text-xs leading-relaxed text-center italic opacity-80">
+                                                Verified: We have successfully matched your profile with multiple school districts in Vietnam. Based on your inputs, we have generated your <strong>Custom Start-Up Roadmap.</strong>
                                             </p>
                                         </div>
 
