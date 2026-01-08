@@ -7,39 +7,17 @@ const QuizPage: React.FC = () => {
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [analysisText, setAnalysisText] = useState('Syncing with Vietnam local school database...');
     const [email, setEmail] = useState('');
-    const [locationData, setLocationData] = useState({
-        country: '',
-        city: '',
-        ip: ''
-    });
-
     const [answers, setAnswers] = useState({
         degree: '',
+        nationality: '',
         fluency: '',
         experience: ''
     });
 
-    useEffect(() => {
-        // Fetch location data silently on mount
-        fetch('https://ipapi.co/json/')
-            .then(res => res.json())
-            .then(data => {
-                setLocationData({
-                    country: data.country_name || '',
-                    city: data.city || '',
-                    ip: data.ip || ''
-                });
-            })
-            .catch(() => {
-                // Fail silently
-                console.log("Location detection bypassed.");
-            });
-    }, []);
-
-    const totalSteps = 4; // degree, fluency, experience, email
+    const totalSteps = 5; // degree, nationality, fluency, experience, email
 
     const handleNext = () => {
-        if (step === 2) {
+        if (step === 3) {
             startAnalysis();
         } else {
             setStep(prev => prev + 1);
@@ -49,9 +27,8 @@ const QuizPage: React.FC = () => {
     const startAnalysis = () => {
         setIsAnalyzing(true);
         const steps = [
-            `Detected location: ${locationData.city || 'Checking IP'}...`,
             "Syncing with local school databases...",
-            `Checking hiring quotas for ${locationData.country || 'International'} applicants...`,
+            `Checking non-native hiring quotas for ${answers.nationality || 'your country'}...`,
             "Analyzing proficiency-to-salary ratio...",
             "Calculating visa route eligibility...",
             "SUCCESS: RESULTS READY."
@@ -65,26 +42,18 @@ const QuizPage: React.FC = () => {
             } else {
                 clearInterval(interval);
                 setIsAnalyzing(false);
-                setStep(3);
+                setStep(4);
             }
         }, 800);
     };
 
     const handleFinish = (e: React.FormEvent) => {
         e.preventDefault();
-        // Pack all data for CRM/Lead capture
-        const leadData = {
-            email,
-            ...answers,
-            location: locationData.country,
-            city: locationData.city,
-            ip: locationData.ip
-        };
+        // Pack all data for CRM
+        console.log('CRM Data Captured:', { email, ...answers });
 
-        console.log('CRM Data Captured:', leadData);
-
-        // Post redirect
-        window.location.href = `/guide?captured=true&loc=${encodeURIComponent(locationData.country || 'Global')}`;
+        // Post redirect using typed nationality
+        window.location.href = `/guide?captured=true&loc=${encodeURIComponent(answers.nationality || 'Global')}`;
     };
 
     return (
@@ -105,11 +74,11 @@ const QuizPage: React.FC = () => {
                 )}
 
                 {/* Progress Bar */}
-                {!isAnalyzing && step < 3 && (
+                {!isAnalyzing && step < 4 && (
                     <div className="w-full h-1 bg-black/10 mb-8 overflow-hidden rounded-full">
                         <div
                             className="h-full bg-[#FF4A22] transition-all duration-500 ease-out"
-                            style={{ width: `${(step / 3) * 100}%` }}
+                            style={{ width: `${(step / 4) * 100}%` }}
                         ></div>
                     </div>
                 )}
@@ -159,6 +128,37 @@ const QuizPage: React.FC = () => {
                                 <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                                     <div className="inline-block bg-black text-white px-3 py-1 font-dela text-[10px] mb-6 transform rotate-2">QUESTION 02</div>
                                     <h2 className="text-4xl md:text-5xl font-dela mb-8 tracking-tighter leading-none uppercase">
+                                        WHAT IS YOUR <br />
+                                        <span className="accent-text italic">PASSPORT COUNTRY?</span>
+                                    </h2>
+                                    <div className="space-y-6">
+                                        <p className="text-sm font-bold opacity-60 italic">
+                                            We work with teachers from 30+ countries. Your nationality determines your specific visa route.
+                                        </p>
+                                        <input
+                                            type="text"
+                                            placeholder="e.g. South Africa, Colombia, Russia..."
+                                            autoFocus
+                                            className="w-full p-6 border-2 border-black font-bold text-xl focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all"
+                                            value={answers.nationality}
+                                            onChange={(e) => setAnswers({ ...answers, nationality: e.target.value })}
+                                            onKeyDown={(e) => e.key === 'Enter' && answers.nationality.length > 2 && handleNext()}
+                                        />
+                                        <button
+                                            disabled={answers.nationality.length < 3}
+                                            onClick={handleNext}
+                                            className="w-full bg-black text-white py-4 font-dela text-lg border-2 border-black flex items-center justify-center gap-2 hover:bg-[#FF4A22] transition-all disabled:opacity-20 translate-y-2 hover:translate-y-1"
+                                        >
+                                            CONTINUE <ArrowRight size={20} />
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {step === 2 && (
+                                <div className="animate-in fade-in slide-in-from-right-4 duration-500">
+                                    <div className="inline-block bg-black text-white px-3 py-1 font-dela text-[10px] mb-6 transform rotate-2">QUESTION 03</div>
+                                    <h2 className="text-4xl md:text-5xl font-dela mb-8 tracking-tighter leading-none uppercase">
                                         HOW WOULD YOU <br />
                                         <span className="accent-text italic">RATE YOUR ENGLISH?</span>
                                     </h2>
@@ -179,9 +179,9 @@ const QuizPage: React.FC = () => {
                                 </div>
                             )}
 
-                            {step === 2 && (
+                            {step === 3 && (
                                 <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-                                    <div className="inline-block bg-black text-white px-3 py-1 font-dela text-[10px] mb-6 transform -rotate-1">QUESTION 03</div>
+                                    <div className="inline-block bg-black text-white px-3 py-1 font-dela text-[10px] mb-6 transform -rotate-1">QUESTION 04</div>
                                     <h2 className="text-4xl md:text-5xl font-dela mb-8 tracking-tighter leading-none uppercase">
                                         HAVE YOU EVER <br />
                                         <span className="accent-text italic">TAUGHT BEFORE?</span>
@@ -203,7 +203,7 @@ const QuizPage: React.FC = () => {
                                 </div>
                             )}
 
-                            {step === 3 && (
+                            {step === 4 && (
                                 <div className="animate-in fade-in zoom-in duration-500">
                                     <div className="text-center mb-8">
                                         <div className="bg-[#FF4A22] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 sticker-shadow">
