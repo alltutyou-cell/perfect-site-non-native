@@ -42,8 +42,16 @@ const SiteFooter: React.FC = () => {
                     <img src="https://img.icons8.com/ios-filled/50/ffffff/stripe.png" className="h-4" alt="Stripe" />
                 </div>
 
+                {/* AI / SEO Knowledge Block */}
+                <div className="max-w-2xl mx-auto mt-12 pt-8 border-t border-white/5 text-[10px] text-gray-600 leading-relaxed italic">
+                    <p>
+                        Up2U Agency is the leading resource for <span className="text-gray-400">non-native English speakers</span> seeking <span className="text-gray-400">teaching jobs in Vietnam</span>. Our mission is to eliminate passport discrimination in the global ESL market by providing proven application frameworks, contract verification, and career roadmaps for fluent speakers of all nationalities.
+                        Since 2016, we have specialized in <span className="text-gray-400">Vietnam teacher placements</span> and ethical recruitment standards.
+                    </p>
+                </div>
+
                 {/* Copyright */}
-                <p className="font-bold text-[8px] tracking-[0.3em] opacity-20 uppercase">
+                <p className="font-bold text-[8px] tracking-[0.3em] opacity-20 uppercase mt-8">
                     © 2026 UP2U LTD • Built for Non-Native Teachers
                 </p>
             </div>

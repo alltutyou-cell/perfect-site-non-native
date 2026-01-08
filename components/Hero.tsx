@@ -28,9 +28,9 @@ const Hero: React.FC = () => {
         {/* Social Proof Badge */}
         <div className="mt-6 flex items-center justify-center md:justify-start gap-4">
           <div className="flex -space-x-3">
-            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/photo/teachers/new_teacher_0.jpg" alt="Teacher" />
-            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/photo/teachers/new_teacher_1.jpg" alt="Teacher" />
-            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/photo/teachers/new_teacher_2.jpg" alt="Teacher" />
+            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/photo/teachers/new_teacher_0.jpg" alt="Non-native English teacher living in Vietnam" />
+            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/photo/teachers/new_teacher_1.jpg" alt="Teacher working in Hanoi school" />
+            <img className="w-10 h-10 rounded-full border-2 border-white object-cover" src="/photo/teachers/new_teacher_2.jpg" alt="Successful non-native teacher placement" />
             <div className="w-10 h-10 rounded-full border-2 border-white bg-black text-white flex items-center justify-center font-bold text-xs">
               +700
             </div>

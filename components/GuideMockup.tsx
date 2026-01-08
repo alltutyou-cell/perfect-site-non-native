@@ -51,7 +51,7 @@ const GuideMockup: React.FC = () => {
                         >
                             <img
                                 src="/photo/guide_mockup.jpg"
-                                alt="Not Native Not Sorry Guide Mockup"
+                                alt="Not Native Not Sorry - The definitive guide for non-native English teachers in Vietnam"
                                 className="w-full h-auto"
                             />
 

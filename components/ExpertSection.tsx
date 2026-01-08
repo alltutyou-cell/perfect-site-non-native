@@ -17,6 +17,25 @@ const ExpertSection: React.FC = () => {
                         <p>I've seen teachers earn $2,100/month working 20 hours a week. And I've seen others get scammed, exploited, or sent home empty-handed.</p>
                         <p>I created this guide because the system is rigged against non-natives, but it's not unbeatable. You just need to know which doors actually open, and how to walk through them without getting burned.</p>
                     </div>
+
+                    <div className="mt-12 grid grid-cols-2 gap-4 border-t-2 border-black pt-8">
+                        <div>
+                            <p className="font-dela text-[10px] opacity-40 mb-1">CREDENTIALS</p>
+                            <ul className="text-xs font-bold space-y-1">
+                                <li>• 700+ Successful Placements</li>
+                                <li>• 8+ Years in Vietnam Market</li>
+                                <li>• Recruitment Expert</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p className="font-dela text-[10px] opacity-40 mb-1">SPECIALIZATION</p>
+                            <ul className="text-xs font-bold space-y-1">
+                                <li>• Visa & Permit Specialist</li>
+                                <li>• Non-Native ESL Expert</li>
+                                <li>• Contract Verification</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="relative">

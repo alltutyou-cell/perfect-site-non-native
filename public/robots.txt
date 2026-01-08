@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Specific permission for AI Search Bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-Search
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://up2uagency.info/sitemap.xml
