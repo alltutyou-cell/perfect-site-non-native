@@ -70,7 +70,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-black selection:bg-[#FF4A22] selection:text-white overflow-x-hidden w-full relative">
       {/* Top Black Bar Marquee */}
-      <div className="bg-black text-white py-3 overflow-hidden whitespace-nowrap border-b-2 border-[#FF4A22] relative z-50">
+      <header className="bg-black text-white py-3 overflow-hidden whitespace-nowrap border-b-2 border-[#FF4A22] relative z-50">
         <div className="inline-block animate-scroll font-dela text-[13px] tracking-wider uppercase">
           <span className="mx-4">🔥 700+ TEACHERS HIRED</span>
           <span className="mx-4">⭐ NO PASSPORT DISCRIMINATION</span>
@@ -81,29 +81,31 @@ const App: React.FC = () => {
           <span className="mx-4">💰 STARTING $1,200/MONTH</span>
           <span className="mx-4">🚀 NO EXPERIENCE NEEDED</span>
         </div>
-      </div>
+      </header>
 
-      <Hero />
+      <main>
+        <Hero />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="reveal-on-scroll"><Testimonials /></div>
-        <div className="reveal-on-scroll"><OpportunitySection /></div>
-        <div className="reveal-on-scroll"><GuideMockup /></div>
-        <div className="reveal-on-scroll"><ProblemSolution /></div>
-        <div className="reveal-on-scroll"><ActionPlanSection /></div>
-        <div className="reveal-on-scroll"><ToolkitSection /></div>
-        <div className="reveal-on-scroll"><ExpertSection /></div>
-      </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal-on-scroll"><Testimonials /></div>
+          <div className="reveal-on-scroll"><OpportunitySection /></div>
+          <div className="reveal-on-scroll"><GuideMockup /></div>
+          <div className="reveal-on-scroll"><ProblemSolution /></div>
+          <div className="reveal-on-scroll"><ActionPlanSection /></div>
+          <div className="reveal-on-scroll"><ToolkitSection /></div>
+          <div className="reveal-on-scroll"><ExpertSection /></div>
+        </div>
 
-      <div className="reveal-on-scroll"><StorySection /></div>
-      <div className="reveal-on-scroll"><GallerySection /></div>
-      <div className="reveal-on-scroll"><TeacherCollage /></div>
-      <div className="reveal-on-scroll"><BonusSection /></div>
+        <div className="reveal-on-scroll"><StorySection /></div>
+        <div className="reveal-on-scroll"><GallerySection /></div>
+        <div className="reveal-on-scroll"><TeacherCollage /></div>
+        <div className="reveal-on-scroll"><BonusSection /></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="reveal-on-scroll"><Guarantee /></div>
-        <div className="reveal-on-scroll"><Objections /></div>
-      </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal-on-scroll"><Guarantee /></div>
+          <div className="reveal-on-scroll"><Objections /></div>
+        </div>
+      </main>
 
       <FinalCTA />
       <SiteFooter />

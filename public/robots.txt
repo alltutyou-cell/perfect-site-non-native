@@ -11,4 +11,17 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: DeepSeek-Ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Standard Search Bots
+User-agent: *
+Allow: /
+
 Sitemap: https://up2uagency.info/sitemap.xml
