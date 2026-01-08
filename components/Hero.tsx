@@ -11,6 +11,7 @@ const Hero: React.FC = () => {
           </div>
           {window.location.search.includes('loc=') && (
             <div className="slanted-badge bg-black text-white sticker-shadow">
+              {window.location.search.includes('name=') && `${new URLSearchParams(window.location.search).get('name')?.toUpperCase()}! `}
               WELCOME {new URLSearchParams(window.location.search).get('loc')?.toUpperCase()} TEACHER 🌏
             </div>
           )}

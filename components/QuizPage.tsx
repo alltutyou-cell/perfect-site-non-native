@@ -24,6 +24,7 @@ const QuizPage: React.FC = () => {
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [analysisText, setAnalysisText] = useState('Syncing with Vietnam local school database...');
     const [email, setEmail] = useState('');
+    const [firstName, setFirstName] = useState('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -89,7 +90,9 @@ const QuizPage: React.FC = () => {
 
     const handleFinish = (e: React.FormEvent) => {
         e.preventDefault();
-        window.location.href = `/guide?captured=true&loc=${encodeURIComponent(answers.nationality || 'Global')}`;
+        const loc = encodeURIComponent(answers.nationality || 'Global');
+        const name = encodeURIComponent(firstName);
+        window.location.href = `/guide?captured=true&loc=${loc}&name=${name}`;
     };
 
     return (
@@ -298,14 +301,24 @@ const QuizPage: React.FC = () => {
                                         </div>
 
                                         <form onSubmit={handleFinish} className="space-y-4">
-                                            <input
-                                                type="email"
-                                                placeholder="Where should we send your results?"
-                                                required
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                className="w-full px-4 py-5 border-2 border-black font-bold focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all text-center text-lg"
-                                            />
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <input
+                                                    type="text"
+                                                    placeholder="First Name"
+                                                    required
+                                                    value={firstName}
+                                                    onChange={(e) => setFirstName(e.target.value)}
+                                                    className="w-full px-4 py-5 border-2 border-black font-bold focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all text-center text-lg"
+                                                />
+                                                <input
+                                                    type="email"
+                                                    placeholder="Best Email Address"
+                                                    required
+                                                    value={email}
+                                                    onChange={(e) => setEmail(e.target.value)}
+                                                    className="w-full px-4 py-5 border-2 border-black font-bold focus:outline-none focus:ring-2 focus:ring-[#FF4A22] transition-all text-center text-lg"
+                                                />
+                                            </div>
                                             <button
                                                 type="submit"
                                                 className="w-full bg-[#FF4A22] text-white py-6 font-dela text-xl border-2 border-black sticker-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex flex-col items-center justify-center gap-1 group"
