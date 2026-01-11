@@ -13,7 +13,7 @@ const RefundPolicy: React.FC = () => {
                 </section>
                 <section>
                     <h2 className="text-2xl font-dela mb-4">How to Request a Refund</h2>
-                    <p>To request a refund, please email our support team at support@up2agency.info with your order details. Refunds will be processed within 5-10 business days.</p>
+                    <p>To request a refund, please email our support team at hi@up2uagency.info with your order details. Refunds will be processed within 5-10 business days.</p>
                 </section>
                 <section>
                     <h2 className="text-2xl font-dela mb-4">Exceptions</h2>
