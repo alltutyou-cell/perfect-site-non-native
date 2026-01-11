@@ -57,9 +57,8 @@ const CostCalculator: React.FC = () => {
     const twoYearSavings = monthlySavings * 24;
 
     // ROI Logic
-    // Using user's avg start up cost: ~$1800 (midpoint of 1550-2120)
-    // Plus post-arrival costs (~$729). Total ~2500 investment.
-    const startupCost = 2500;
+    // Using guide's average: ~$1800 (midpoint of 1600-2480 for upfront)
+    const startupCost = 1800;
     const monthsToBreakEven = monthlySavings > 0 ? (startupCost / monthlySavings).toFixed(1) : 'NEVER';
 
     // Graph
@@ -231,7 +230,7 @@ const CostCalculator: React.FC = () => {
                             {monthlySavings > 0 ? (
                                 <div className="flex justify-between items-baseline">
                                     <div className="text-[10px] font-bold opacity-60 w-2/3">
-                                        Based on an estimated ~$2,500 startup cost (Flights, Visa, Agency, Survival $, Docs)...
+                                        Based on an estimated ~$1,800 startup cost (Flights, Fees, Survival, Docs)...
                                     </div>
                                     <div className="text-right">
                                         <div className="font-dela text-2xl">{monthsToBreakEven} MO</div>
@@ -251,47 +250,68 @@ const CostCalculator: React.FC = () => {
                                     <button onClick={() => setShowStartupDetails(false)} className="font-bold text-lg hover:text-[#FF4A22]">×</button>
                                 </div>
                                 <div className="space-y-4 text-[10px] font-bold tracking-wide">
+
+                                    {/* PHASE 1: BEFORE ARRIVAL */}
+                                    <div className="mb-2 text-[#FF4A22] text-[9px] uppercase tracking-widest border-b border-white/10 pb-1">Phase 1: Before Arrival</div>
+
+                                    <div className="flex justify-between items-center bg-white/5 p-2 rounded">
+                                        <span>🎟️ UP2U SERVICE FEE</span>
+                                        <div className="text-right">
+                                            <span>$600</span>
+                                            <span className="block text-[8px] opacity-60 font-normal">($300 upfront + $300 when hired)</span>
+                                        </div>
+                                    </div>
+
                                     <div className="flex justify-between items-center bg-white/5 p-2 rounded">
                                         <span>✈️ FLIGHT TO VN</span>
-                                        <span className="text-right">$300 - $1,200</span>
+                                        <span className="text-right">$400 - $800</span>
                                     </div>
+
                                     <div className="flex justify-between items-center bg-white/5 p-2 rounded">
-                                        <span>🎟️ UP2U AGENCY FEE</span>
-                                        <span className="text-right">$750</span>
+                                        <span>🛂 VISA & DOC LEGALIZATION</span>
+                                        <span className="text-right">$150 - $600</span>
                                     </div>
-                                    <div className="flex justify-between items-center bg-white/5 p-2 rounded">
-                                        <span>🛂 BUSINESS VISA</span>
-                                        <span className="text-right">$200</span>
-                                    </div>
+
                                     <div className="flex justify-between items-center bg-white/5 p-2 rounded">
                                         <span>🍜 1ST MONTH SURVIVAL</span>
-                                        <span className="text-right">$450+</span>
+                                        <span className="text-right">~$250</span>
                                     </div>
+
                                     <div className="flex justify-between items-center opacity-60 px-2">
-                                        <span>📜 DOC LEGALIZATION</span>
-                                        <span className="text-right">~$100</span>
+                                        <span>🏠 ACCOMMODATION DEPOSIT</span>
+                                        <span className="text-right">$150 - $300</span>
                                     </div>
+
                                     <div className="flex justify-between items-center opacity-60 px-2">
                                         <span>🎓 TEFL (IF NEEDED)</span>
-                                        <span className="text-right">$50 - $180</span>
+                                        <span className="text-right">$0 - $180</span>
                                     </div>
 
-                                    <div className="border-t-2 border-[#FF4A22] pt-3 mt-4 flex justify-between items-center text-[#FF4A22] font-dela text-sm">
-                                        <span>EST. TOTAL NEEDED</span>
-                                        <span>~$1,850 - $2,900</span>
+                                    <div className="border-t-2 border-[#FF4A22] pt-3 mt-2 flex justify-between items-center text-[#FF4A22] font-dela text-sm">
+                                        <span>EST. UPFRONT NEEDED</span>
+                                        <span>~$1,600 - $2,480</span>
                                     </div>
 
-                                    <div className="mt-6 pt-4 border-t border-white/20">
-                                        <p className="mb-3 italic text-[9px] opacity-60 uppercase text-center">Later costs (deducted from future salary)</p>
-                                        <div className="grid grid-cols-2 gap-2 text-[9px] opacity-50">
-                                            <div className="bg-white/5 p-2 text-center rounded">📄 WORK PERMIT (~$275)</div>
-                                            <div className="bg-white/5 p-2 text-center rounded">🆔 RESIDENCE CARD (~$72)</div>
+                                    {/* PHASE 2: AFTER ARRIVAL */}
+                                    <div className="mt-6 text-[#FF4A22] text-[9px] uppercase tracking-widest border-b border-white/10 pb-1">Phase 2: Inside Vietnam (From Salary)</div>
+
+                                    <div className="grid gap-2 text-[9px] opacity-70">
+                                        <div className="flex justify-between"><span>🏥 HEALTH CHECK</span><span>$50 - $80</span></div>
+                                        <div className="flex justify-between"><span>👮 POLICE CHECK (VN)</span><span>~$8</span></div>
+                                        <div className="flex justify-between"><span>📄 WORK PERMIT (YOU PAY ~50%)</span><span>$0 - $270</span></div>
+                                        <div className="flex justify-between"><span>🆔 RESIDENCE CARD (TRC)</span><span>~$170</span></div>
+                                        <div className="border-t border-white/10 pt-1 mt-1 flex justify-between font-bold text-white">
+                                            <span>TOTAL PHASE 2</span>
+                                            <span>~$400 - $640</span>
                                         </div>
+                                    </div>
+
+                                    <div className="mt-4 p-3 bg-[#FF4A22]/20 border border-[#FF4A22] rounded text-[9px] italic text-center">
+                                        "Most teachers spend ~$1,700-$1,900 total to get started. You earn this back in 1.5 - 2 months."
                                     </div>
                                 </div>
                             </div>
                         )}
-
                     </div>
                 </div>
             </div>
