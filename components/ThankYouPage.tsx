@@ -48,7 +48,7 @@ const ThankYouPage: React.FC = () => {
                             <div>
                                 <div className="font-dela text-xs opacity-30 mb-2">STEP 01</div>
                                 <h4 className="font-dela text-lg mb-4">DOWNLOAD YOUR GUIDE</h4>
-                                <a href="#" className="inline-block bg-black text-white px-6 py-3 font-dela text-sm sticker-shadow hover:translate-x-1 hover:translate-y-1 transition-all">
+                                <a href="https://drive.google.com/drive/folders/1lZGQ3dXIPmdMtpHG8wqH4tkieofL1xTJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-block bg-black text-white px-6 py-3 font-dela text-sm sticker-shadow hover:translate-x-1 hover:translate-y-1 transition-all">
                                     → DOWNLOAD NOW
                                 </a>
                             </div>
