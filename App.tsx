@@ -159,31 +159,7 @@ const App: React.FC = () => {
 
       <FinalCTA />
 
-      <footer className="bg-black text-white py-24 px-8 text-center border-t-4 border-[#FF4A22]">
-        <div className="font-dela text-4xl mb-6 tracking-tighter">NOT NATIVE.<br />NOT SORRY.™</div>
-        <div className="flex justify-center gap-8 mb-8 grayscale opacity-50">
-          <img src="https://img.icons8.com/ios-filled/50/ffffff/visa.png" className="h-8" alt="Visa" />
-          <img src="https://img.icons8.com/ios-filled/50/ffffff/mastercard.png" className="h-8" alt="Mastercard" />
-          <img src="https://img.icons8.com/ios-filled/50/ffffff/paypal.png" className="h-8" alt="Paypal" />
-        </div>
-        <p className="opacity-40 text-[10px] uppercase font-bold tracking-[0.4em] mb-8">
-          Vietnam Teaching Guide &bull; Instant Delivery &bull; 7-Day Refund Guarantee &bull; © 2024
-        </p>
-        <div className="flex justify-center gap-4">
-          <button
-            onClick={() => navigate('/studio')}
-            className="bg-white text-black px-6 py-2 font-dela text-xs hover:bg-[#FF4A22] hover:text-white transition-all flex items-center gap-2"
-          >
-            <span className="animate-pulse">🔒</span> ACCESS_PRIVATE_AI_STUDIO
-          </button>
-          <button
-            onClick={() => navigate('/calculator')}
-            className="border-2 border-white text-white px-6 py-2 font-dela text-xs hover:bg-white hover:text-black transition-all flex items-center gap-2"
-          >
-            📊 COST_CALCULATOR
-          </button>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <StickyBottomNav />
       <WhatsAppButton />
