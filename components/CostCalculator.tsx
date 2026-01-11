@@ -1,21 +1,51 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CostCalculator: React.FC = () => {
-    // Default values for HANOI (Standard)
-    const [city, setCity] = useState<'HANOI' | 'HCMC' | 'DANANG' | 'CUSTOM'>('HANOI');
+    // State
+    const [city, setCity] = useState<'HANOI' | 'HCMC' | 'DANANG'>('HANOI');
+    const [lifestyle, setLifestyle] = useState<'SURVIVOR' | 'COMFORTABLE' | 'BALLER'>('COMFORTABLE');
+    const [customMode, setCustomMode] = useState(false);
+
     const [salary, setSalary] = useState(1600);
     const [rent, setRent] = useState(450);
     const [food, setFood] = useState(250);
     const [transport, setTransport] = useState(50);
-    const [misc, setMisc] = useState(190);
+    const [misc, setMisc] = useState(100);
 
-    // City presets
-    const applyPreset = (cityName: 'HANOI' | 'HCMC' | 'DANANG') => {
-        setCity(cityName);
-        if (cityName === 'HANOI') { setRent(450); setFood(250); setTransport(50); setMisc(190); }
-        if (cityName === 'HCMC') { setRent(550); setFood(300); setTransport(70); setMisc(200); }
-        if (cityName === 'DANANG') { setRent(400); setFood(220); setTransport(40); setMisc(150); }
+    // Data Models
+    const DATA = {
+        HANOI: {
+            SURVIVOR: { rent: 300, food: 150, transport: 30, misc: 50 },
+            COMFORTABLE: { rent: 450, food: 250, transport: 50, misc: 100 },
+            BALLER: { rent: 650, food: 400, transport: 80, misc: 200 }
+        },
+        HCMC: {
+            SURVIVOR: { rent: 350, food: 180, transport: 40, misc: 60 },
+            COMFORTABLE: { rent: 550, food: 300, transport: 70, misc: 120 },
+            BALLER: { rent: 800, food: 500, transport: 100, misc: 300 }
+        },
+        DANANG: {
+            SURVIVOR: { rent: 250, food: 150, transport: 30, misc: 40 },
+            COMFORTABLE: { rent: 400, food: 220, transport: 40, misc: 100 },
+            BALLER: { rent: 600, food: 350, transport: 60, misc: 150 }
+        }
+    };
+
+    // Update inputs when City or Lifestyle changes (unless in custom mode)
+    useEffect(() => {
+        if (!customMode) {
+            const data = DATA[city][lifestyle];
+            setRent(data.rent);
+            setFood(data.food);
+            setTransport(data.transport);
+            setMisc(data.misc);
+        }
+    }, [city, lifestyle, customMode]);
+
+    const handleInputChange = (setter: (val: number) => void, val: string) => {
+        setCustomMode(true);
+        setter(Number(val));
     };
 
     // Calculations
@@ -24,6 +54,9 @@ const CostCalculator: React.FC = () => {
     const yearlySavings = monthlySavings * 12;
     const twoYearSavings = monthlySavings * 24;
 
+    // Graph Scale Logic
+    const maxSavings = 50000; // Cap for visualization
+    const graphPercent = Math.min((twoYearSavings / maxSavings) * 100, 100);
     const graphHeight = 200;
 
     return (
@@ -36,7 +69,7 @@ const CostCalculator: React.FC = () => {
                 </div>
                 <h2 className="font-dela text-3xl md:text-5xl mb-2 uppercase">Your Freedom Calculator</h2>
                 <p className="text-sm font-bold opacity-60 max-w-lg mx-auto">
-                    STOP GUESSING. PLUG IN YOUR NUMBERS TO SEE EXACTLY HOW MUCH WEALTH YOU CAN BUILD IN 24 MONTHS.
+                    STOP GUESSING. USE OUR REALISTIC MARKET DATA TO PROJECT YOUR WEALTH.
                 </p>
             </div>
 
@@ -44,25 +77,49 @@ const CostCalculator: React.FC = () => {
 
                 {/* Left: Controls */}
                 <div className="space-y-8">
-                    {/* City Selector */}
-                    <div>
-                        <label className="block font-dela text-xs mb-3 opacity-50">STEP 1: CHOOSE A BASELINE</label>
-                        <div className="flex gap-2">
-                            {(['HANOI', 'HCMC', 'DANANG'] as const).map(c => (
-                                <button
-                                    key={c}
-                                    onClick={() => applyPreset(c)}
-                                    className={`flex-1 py-3 font-dela text-xs border-2 border-black transition-all ${city === c ? 'bg-black text-white' : 'bg-white hover:bg-gray-100'}`}
-                                >
-                                    {c}
-                                </button>
-                            ))}
+                    {/* Selectors */}
+                    <div className="grid grid-cols-2 gap-8">
+                        <div>
+                            <label className="block font-dela text-xs mb-3 opacity-50">1. CHOOSY CITY</label>
+                            <div className="flex flex-col gap-2">
+                                {(['HANOI', 'HCMC', 'DANANG'] as const).map(c => (
+                                    <button
+                                        key={c}
+                                        onClick={() => { setCity(c); setCustomMode(false); }}
+                                        className={`py-2 px-4 font-dela text-xs border-2 border-black text-left hover:translate-x-1 transition-transform ${city === c ? 'bg-black text-white' : 'bg-white'}`}
+                                    >
+                                        {c} {city === c && '✓'}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                            <label className="block font-dela text-xs mb-3 opacity-50">2. LIFESTYLE</label>
+                            <div className="flex flex-col gap-2">
+                                {[
+                                    { id: 'SURVIVOR', label: 'SURVIVOR', desc: 'Minimalist' },
+                                    { id: 'COMFORTABLE', label: 'COMFORTABLE', desc: 'Standard expat' },
+                                    { id: 'BALLER', label: 'BALLER', desc: 'Live large' }
+                                ].map((l) => (
+                                    <button
+                                        key={l.id}
+                                        onClick={() => { setLifestyle(l.id as any); setCustomMode(false); }}
+                                        className={`py-2 px-4 border-2 border-black text-left hover:translate-x-1 transition-transform ${lifestyle === l.id ? 'bg-[#FF4A22] text-white' : 'bg-white'}`}
+                                    >
+                                        <div className="font-dela text-xs">{l.label}</div>
+                                        <div className="text-[9px] font-bold opacity-60 uppercase">{l.desc}</div>
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
                     {/* Inputs */}
                     <div className="space-y-4">
-                        <label className="block font-dela text-xs mb-3 opacity-50">STEP 2: CUSTOMIZE YOUR LIFESTYLE (USD)</label>
+                        <div className="flex justify-between items-end">
+                            <label className="block font-dela text-xs opacity-50">3. FINE TUNE (USD)</label>
+                            {customMode && <button onClick={() => setCustomMode(false)} className="text-[9px] underline text-red-500 font-bold">RESET TO PRESETS</button>}
+                        </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div>
@@ -70,43 +127,50 @@ const CostCalculator: React.FC = () => {
                                 <input
                                     type="number"
                                     value={salary}
-                                    onChange={(e) => { setSalary(Number(e.target.value)); setCity('CUSTOM') }}
+                                    onChange={(e) => setSalary(Number(e.target.value))}
                                     className="w-full border-2 border-black p-3 font-dela text-lg focus:bg-[#F8F0DD] outline-none"
                                 />
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Avg non-native: $1200-$2100</p>
                             </div>
                             <div>
                                 <label className="text-[10px] font-bold uppercase mb-1 block">Rent ($)</label>
                                 <input
                                     type="number"
                                     value={rent}
-                                    onChange={(e) => { setRent(Number(e.target.value)); setCity('CUSTOM') }}
+                                    onChange={(e) => handleInputChange(setRent, e.target.value)}
                                     className="w-full border-2 border-black p-3 font-bold focus:bg-[#F8F0DD] outline-none"
                                 />
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Studio: $300 | 2-Bed: $600+</p>
                             </div>
                             <div>
                                 <label className="text-[10px] font-bold uppercase mb-1 block">Food & Fun ($)</label>
                                 <input
                                     type="number"
                                     value={food}
-                                    onChange={(e) => { setFood(Number(e.target.value)); setCity('CUSTOM') }}
+                                    onChange={(e) => handleInputChange(setFood, e.target.value)}
                                     className="w-full border-2 border-black p-3 font-bold focus:bg-[#F8F0DD] outline-none"
                                 />
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Street food: $1-2 | Western meal: $8-15</p>
                             </div>
                             <div>
                                 <label className="text-[10px] font-bold uppercase mb-1 block">Transport ($)</label>
                                 <input
                                     type="number"
                                     value={transport}
-                                    onChange={(e) => { setTransport(Number(e.target.value)); setCity('CUSTOM') }}
+                                    onChange={(e) => handleInputChange(setTransport, e.target.value)}
                                     className="w-full border-2 border-black p-3 font-bold focus:bg-[#F8F0DD] outline-none"
                                 />
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Grab bike: $1-2 per trip</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Total Expenses Display */}
                     <div className="bg-[#F8F0DD] border-2 border-black p-4 flex justify-between items-center">
-                        <span className="font-bold text-xs uppercase opacity-60">Total Monthly Burn</span>
+                        <div>
+                            <span className="font-bold text-xs uppercase opacity-60 block">Total Monthly Burn</span>
+                            {customMode && <span className="text-[9px] text-[#FF4A22] font-bold">CUSTOMIZED*</span>}
+                        </div>
                         <span className="font-dela text-xl">${totalExpenses}</span>
                     </div>
                 </div>
@@ -140,7 +204,7 @@ const CostCalculator: React.FC = () => {
 
                             {/* Graph Container */}
                             <div className="h-48 border-l-2 border-b-2 border-white/20 relative">
-                                {/* The Curve */}
+                                {/* The Dynamic Curve */}
                                 <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
                                     <defs>
                                         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -148,43 +212,38 @@ const CostCalculator: React.FC = () => {
                                             <stop offset="100%" stopColor="#FF4A22" stopOpacity="0" />
                                         </linearGradient>
                                     </defs>
-                                    {/* Line */}
                                     <path
-                                        d={`M0,${graphHeight} L${1000},0`}
+                                        d={`M0,${graphHeight} C400,${graphHeight - (graphPercent * 2)} 600,${graphHeight - (graphPercent * 2)} 1000,0`}
                                         vectorEffect="non-scaling-stroke"
                                         stroke="#FF4A22"
                                         strokeWidth="4"
                                         fill="none"
                                         className="w-full"
-                                        style={{ transform: 'scaleY(-1)' }}
+                                    />
+                                    {/* Filled Area */}
+                                    <path
+                                        d={`M0,${graphHeight} C400,${graphHeight - (graphPercent * 2)} 600,${graphHeight - (graphPercent * 2)} 1000,0 V${graphHeight} H0 Z`}
+                                        fill="url(#gradient)"
+                                        className="w-full"
                                     />
                                 </svg>
-
-                                {/* CSS Bar Graph Simulation for "Wealth Stacking" */}
-                                <div className="absolute bottom-0 left-0 right-0 top-0 flex items-end justify-between px-2">
-                                    {[...Array(12)].map((_, i) => (
-                                        <div
-                                            key={i}
-                                            className="w-full bg-[#FF4A22] opacity-80 mx-1 hover:opacity-100 transition-opacity"
-                                            style={{ height: `${((i + 1) / 12) * 100}%` }}
-                                        ></div>
-                                    ))}
-                                </div>
                             </div>
 
                             <div className="mt-6 flex justify-between items-center bg-white/10 p-4 border border-white/20">
-                                <span className="font-dela text-xs">24-MONTH WEALTH:</span>
-                                <span className="font-dela text-2xl text-[#FF4A22]">${twoYearSavings.toLocaleString()}</span>
+                                <div>
+                                    <div className="font-dela text-xs">24-MONTH WEALTH</div>
+                                    <div className="text-[9px] opacity-50">COMPOUND POTENTIAL</div>
+                                </div>
+                                <span className="font-dela text-3xl text-[#FF4A22]">${twoYearSavings.toLocaleString()}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="mt-8 text-center">
-                <p className="text-[10px] font-bold uppercase opacity-40">
-                    *Estimates based on current 2024 tax rates and living costs.
-                    Your actual savings depend on your discipline.
+            <div className="mt-8 text-center bg-gray-100 p-4 border-2 border-black/10">
+                <p className="text-[10px] font-bold uppercase opacity-50 max-w-2xl mx-auto">
+                    *DISCLAIMER: 'Survivor' is tight but doable. 'Comfortable' is typical for teachers. 'Baller' is for those who want Western luxuries. Values are estimates based on 2024 market rates.
                 </p>
             </div>
         </div>
