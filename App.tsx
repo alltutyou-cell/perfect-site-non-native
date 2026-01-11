@@ -97,26 +97,8 @@ const App: React.FC = () => {
 
   if (path === '/calculator') {
     return (
-      <div className="min-h-screen bg-[#F8F0DD] p-8 flex flex-col items-center justify-center">
-        <div className="max-w-4xl w-full">
-          <button
-            onClick={() => navigate('/landing')}
-            className="mb-8 font-dela text-sm bg-black text-white px-4 py-2 hover:bg-[#FF4A22] transition-colors"
-          >
-            &larr; BACK TO HOME
-          </button>
-          <CostCalculator />
-          <div className="text-center mt-12">
-            <h3 className="font-dela text-2xl mb-4">WANT TO SAVE MORE?</h3>
-            <p className="font-bold mb-6">Get the full guide to find high-paying jobs ($2,000+) only for non-natives.</p>
-            <button
-              onClick={() => navigate('/landing')}
-              className="bg-[#FF4A22] text-white font-dela px-8 py-4 border-2 border-black sticker-shadow hover:translate-y-1 hover:shadow-none transition-all"
-            >
-              GET THE FULL GUIDE FOR $19
-            </button>
-          </div>
-        </div>
+      <div className="min-h-screen bg-[#F8F0DD] p-4 md:p-12 flex flex-col items-center justify-center">
+        <CostCalculator />
       </div>
     )
   }
