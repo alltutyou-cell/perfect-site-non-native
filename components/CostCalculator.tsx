@@ -4,33 +4,33 @@ import React, { useState, useEffect } from 'react';
 const CostCalculator: React.FC = () => {
     // State
     const [city, setCity] = useState<'HANOI' | 'HCMC' | 'DANANG'>('HANOI');
-    const [lifestyle, setLifestyle] = useState<'SURVIVOR' | 'COMFORTABLE' | 'BALLER'>('COMFORTABLE');
+    const [lifestyle, setLifestyle] = useState<'BUDGET' | 'COMFORTABLE' | 'LUXURY'>('COMFORTABLE');
     const [customMode, setCustomMode] = useState(false);
     const [showStartupDetails, setShowStartupDetails] = useState(false);
 
     const [salary, setSalary] = useState(1600);
-    const [rent, setRent] = useState(350);
-    const [food, setFood] = useState(250);
-    const [transport, setTransport] = useState(30);
-    const [misc, setMisc] = useState(80);
+    const [rent, setRent] = useState(500);
+    const [food, setFood] = useState(200);
+    const [transport, setTransport] = useState(70);
+    const [utilities, setUtilities] = useState(70);
+    const [entertainment, setEntertainment] = useState(100);
 
-    // Data Models (Updated 2026 Reality)
+    // Data Models (Updated from 2026 Cost of Living Guide)
     const DATA = {
         HANOI: {
-            // Rent dropped to reflect $200-$250 reality for budget
-            SURVIVOR: { rent: 220, food: 150, transport: 30, misc: 50 },
-            COMFORTABLE: { rent: 350, food: 250, transport: 50, misc: 100 },
-            BALLER: { rent: 600, food: 400, transport: 80, misc: 200 }
+            BUDGET: { rent: 250, food: 120, transport: 50, utilities: 40, entertainment: 60 },      // Total: ~$520
+            COMFORTABLE: { rent: 500, food: 200, transport: 70, utilities: 100, entertainment: 150 }, // Total: ~$1,020
+            LUXURY: { rent: 700, food: 300, transport: 100, utilities: 120, entertainment: 250 }     // Total: ~$1,470
         },
         HCMC: {
-            SURVIVOR: { rent: 250, food: 180, transport: 40, misc: 60 },
-            COMFORTABLE: { rent: 450, food: 300, transport: 60, misc: 120 },
-            BALLER: { rent: 750, food: 500, transport: 100, misc: 300 }
+            BUDGET: { rent: 350, food: 150, transport: 60, utilities: 50, entertainment: 80 },       // Total: ~$690
+            COMFORTABLE: { rent: 650, food: 250, transport: 80, utilities: 110, entertainment: 180 }, // Total: ~$1,270
+            LUXURY: { rent: 850, food: 300, transport: 100, utilities: 130, entertainment: 250 }     // Total: ~$1,630
         },
         DANANG: {
-            SURVIVOR: { rent: 200, food: 150, transport: 30, misc: 40 },
-            COMFORTABLE: { rent: 350, food: 220, transport: 40, misc: 100 },
-            BALLER: { rent: 550, food: 350, transport: 60, misc: 150 }
+            BUDGET: { rent: 220, food: 110, transport: 40, utilities: 35, entertainment: 50 },       // Total: ~$455
+            COMFORTABLE: { rent: 450, food: 180, transport: 60, utilities: 90, entertainment: 120 },  // Total: ~$900
+            LUXURY: { rent: 600, food: 280, transport: 90, utilities: 110, entertainment: 220 }      // Total: ~$1,300
         }
     };
 
@@ -41,7 +41,8 @@ const CostCalculator: React.FC = () => {
             setRent(data.rent);
             setFood(data.food);
             setTransport(data.transport);
-            setMisc(data.misc);
+            setUtilities(data.utilities);
+            setEntertainment(data.entertainment);
         }
     }, [city, lifestyle, customMode]);
 
@@ -51,20 +52,18 @@ const CostCalculator: React.FC = () => {
     };
 
     // Calculations
-    const totalExpenses = rent + food + transport + misc;
+    const totalExpenses = rent + food + transport + utilities + entertainment;
     const monthlySavings = salary - totalExpenses;
     const yearlySavings = monthlySavings * 12;
     const twoYearSavings = monthlySavings * 24;
 
     // ROI Logic
-    // Using guide's average: ~$1800 (midpoint of 1600-2480 for upfront)
     const startupCost = 1800;
     const monthsToBreakEven = monthlySavings > 0 ? (startupCost / monthlySavings).toFixed(1) : 'NEVER';
 
     // Graph
     const maxSavings = 50000;
     const graphPercent = Math.min((twoYearSavings / maxSavings) * 100, 100);
-    const graphHeight = 200;
 
     return (
         <div className="bg-white border-4 border-black p-4 md:p-8 card-shadow w-full max-w-5xl mx-auto" id="cost-calculator">
@@ -74,9 +73,9 @@ const CostCalculator: React.FC = () => {
                 <div className="inline-block bg-[#FF4A22] text-white px-3 py-1 font-dela text-xs mb-3 -rotate-2">
                     UPDATED FOR 2026
                 </div>
-                <h2 className="font-dela text-3xl md:text-5xl mb-2 uppercase">Your Freedom Calculator</h2>
-                <p className="text-sm font-bold opacity-60 max-w-lg mx-auto">
-                    STOP GUESSING. PLUG IN YOUR NUMBERS TO SEE EXACTLY HOW MUCH WEALTH YOU CAN BUILD IN 24 MONTHS.
+                <h2 className="font-dela text-3xl md:text-5xl mb-2 uppercase">Cost of Living Calculator</h2>
+                <p className="text-sm font-bold opacity-60 max-w-2xl mx-auto">
+                    Stop Guessing. Here's EXACTLY How Much You'll Spend (And Save) Teaching in Vietnam.
                 </p>
             </div>
 
@@ -104,9 +103,9 @@ const CostCalculator: React.FC = () => {
                             <label className="block font-dela text-xs mb-3 opacity-50">2. LIFESTYLE</label>
                             <div className="flex flex-col gap-2">
                                 {[
-                                    { id: 'SURVIVOR', label: 'SURVIVOR', desc: 'Cheap Room ($200ish)' },
-                                    { id: 'COMFORTABLE', label: 'COMFORTABLE', desc: 'Nice Studio ($350ish)' },
-                                    { id: 'BALLER', label: 'BALLER', desc: 'Luxury ($500+)' }
+                                    { id: 'BUDGET', label: 'BUDGET', desc: 'Street Food & Saving' },
+                                    { id: 'COMFORTABLE', label: 'COMFORTABLE', desc: 'Balanced Living' },
+                                    { id: 'LUXURY', label: 'LUXURY', desc: 'Western Dining & Gyms' }
                                 ].map((l) => (
                                     <button
                                         key={l.id}
@@ -137,7 +136,7 @@ const CostCalculator: React.FC = () => {
                                     onChange={(e) => setSalary(Number(e.target.value))}
                                     className="w-full border-2 border-black p-3 font-dela text-lg focus:bg-[#F8F0DD] outline-none"
                                 />
-                                <p className="text-[9px] mt-1 opacity-50 font-bold">Avg: $1200-$2100</p>
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Avg: $1,100-$2,100</p>
                             </div>
                             <div>
                                 <label className="text-[10px] font-bold uppercase mb-1 block">Rent ($)</label>
@@ -147,17 +146,17 @@ const CostCalculator: React.FC = () => {
                                     onChange={(e) => handleInputChange(setRent, e.target.value)}
                                     className="w-full border-2 border-black p-3 font-bold focus:bg-[#F8F0DD] outline-none"
                                 />
-                                <p className="text-[9px] mt-1 opacity-50 font-bold">Private 1-Person Apt/Studio: $200 - $300+</p>
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">1BR: $250-$850 (city dependent)</p>
                             </div>
                             <div>
-                                <label className="text-[10px] font-bold uppercase mb-1 block">Food & Fun ($)</label>
+                                <label className="text-[10px] font-bold uppercase mb-1 block">Food ($)</label>
                                 <input
                                     type="number"
                                     value={food}
                                     onChange={(e) => handleInputChange(setFood, e.target.value)}
                                     className="w-full border-2 border-black p-3 font-bold focus:bg-[#F8F0DD] outline-none"
                                 />
-                                <p className="text-[9px] mt-1 opacity-50 font-bold">Western food starts at $4</p>
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Street: $1-2 | Western: $5-10</p>
                             </div>
                             <div>
                                 <label className="text-[10px] font-bold uppercase mb-1 block">Transport ($)</label>
@@ -167,7 +166,27 @@ const CostCalculator: React.FC = () => {
                                     onChange={(e) => handleInputChange(setTransport, e.target.value)}
                                     className="w-full border-2 border-black p-3 font-bold focus:bg-[#F8F0DD] outline-none"
                                 />
-                                <p className="text-[9px] mt-1 opacity-50 font-bold">Grab: $1-2/trip</p>
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Motorbike rental: $40-50/mo</p>
+                            </div>
+                            <div>
+                                <label className="text-[10px] font-bold uppercase mb-1 block">Utilities ($)</label>
+                                <input
+                                    type="number"
+                                    value={utilities}
+                                    onChange={(e) => handleInputChange(setUtilities, e.target.value)}
+                                    className="w-full border-2 border-black p-3 font-bold focus:bg-[#F8F0DD] outline-none"
+                                />
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Electric + Water + Internet + Phone</p>
+                            </div>
+                            <div>
+                                <label className="text-[10px] font-bold uppercase mb-1 block">Fun & Misc ($)</label>
+                                <input
+                                    type="number"
+                                    value={entertainment}
+                                    onChange={(e) => handleInputChange(setEntertainment, e.target.value)}
+                                    className="w-full border-2 border-black p-3 font-bold focus:bg-[#F8F0DD] outline-none"
+                                />
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Gym, bars, shopping, travel</p>
                             </div>
                         </div>
                     </div>
@@ -176,7 +195,7 @@ const CostCalculator: React.FC = () => {
                     <div className="bg-[#F8F0DD] border-2 border-black p-4 flex justify-between items-center">
                         <div>
                             <span className="font-bold text-xs uppercase opacity-60 block">Total Monthly Burn</span>
-                            <span className="text-[9px] font-bold opacity-40">INCLUDES MISC BUFFER OF ${misc}</span>
+                            {customMode && <span className="text-[9px] text-[#FF4A22] font-bold">CUSTOMIZED*</span>}
                         </div>
                         <span className="font-dela text-xl">${totalExpenses}</span>
                     </div>
@@ -230,7 +249,7 @@ const CostCalculator: React.FC = () => {
                             {monthlySavings > 0 ? (
                                 <div className="flex justify-between items-baseline">
                                     <div className="text-[10px] font-bold opacity-60 w-2/3">
-                                        Based on an estimated ~$1,800 startup cost (Flights, Fees, Survival, Docs)...
+                                        Based on ~$1,800 startup cost...
                                     </div>
                                     <div className="text-right">
                                         <div className="font-dela text-2xl">{monthsToBreakEven} MO</div>
@@ -289,7 +308,7 @@ const CostCalculator: React.FC = () => {
 
                                     <div className="border-t-2 border-[#FF4A22] pt-3 mt-2 flex justify-between items-center text-[#FF4A22] font-dela text-sm">
                                         <span>EST. UPFRONT NEEDED</span>
-                                        <span>~$1,600 - $2,480</span>
+                                        <span>~$1,650 - $2,630</span>
                                     </div>
 
                                     {/* PHASE 2: AFTER ARRIVAL */}
