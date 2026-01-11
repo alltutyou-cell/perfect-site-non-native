@@ -248,23 +248,45 @@ const CostCalculator: React.FC = () => {
                             <div className="absolute inset-0 bg-black/95 p-6 z-20 overflow-y-auto">
                                 <div className="flex justify-between items-center mb-4 border-b border-white/20 pb-2">
                                     <h4 className="font-dela text-sm text-[#FF4A22]">STARTUP COST REALITY (2026)</h4>
-                                    <button onClick={() => setShowStartupDetails(false)} className="font-bold text-lg">×</button>
+                                    <button onClick={() => setShowStartupDetails(false)} className="font-bold text-lg hover:text-[#FF4A22]">×</button>
                                 </div>
-                                <div className="space-y-3 text-[10px] font-bold opacity-80">
-                                    <div className="flex justify-between"><span>✈️ FLIGHT TO VN</span><span>~$600</span></div>
-                                    <div className="flex justify-between"><span>🎟️ UP2U AGENCY FEE</span><span>$750</span></div>
-                                    <div className="flex justify-between"><span>🛂 BUSINESS VISA</span><span>$200</span></div>
-                                    <div className="flex justify-between"><span>🍜 1ST MONTH SURVIVAL</span><span>$450+</span></div>
-                                    <div className="flex justify-between opacity-50"><span>📜 DOC LEGALIZATION</span><span>~$100</span></div>
-                                    <div className="flex justify-between opacity-50"><span>🎓 TEFL (IF NEEDED)</span><span>$50-$170</span></div>
-                                    <div className="border-t border-white/20 pt-2 mt-2 flex justify-between text-[#FF4A22] font-dela text-xs">
-                                        <span>EST. TOTAL NEEDED</span>
-                                        <span>~$2,150</span>
+                                <div className="space-y-4 text-[10px] font-bold tracking-wide">
+                                    <div className="flex justify-between items-center bg-white/5 p-2 rounded">
+                                        <span>✈️ FLIGHT TO VN</span>
+                                        <span className="text-right">$300 - $1,200</span>
                                     </div>
-                                    <div className="mt-4 pt-2 border-t border-white/20">
-                                        <p className="mb-2 italic text-[9px] opacity-60">LATER COSTS (FROM SALARY):</p>
-                                        <div className="flex justify-between opacity-50"><span>📄 WORK PERMIT (50%)</span><span>~$275</span></div>
-                                        <div className="flex justify-between opacity-50"><span>🆔 RESIDENCE CARD</span><span>~$72</span></div>
+                                    <div className="flex justify-between items-center bg-white/5 p-2 rounded">
+                                        <span>🎟️ UP2U AGENCY FEE</span>
+                                        <span className="text-right">$750</span>
+                                    </div>
+                                    <div className="flex justify-between items-center bg-white/5 p-2 rounded">
+                                        <span>🛂 BUSINESS VISA</span>
+                                        <span className="text-right">$200</span>
+                                    </div>
+                                    <div className="flex justify-between items-center bg-white/5 p-2 rounded">
+                                        <span>🍜 1ST MONTH SURVIVAL</span>
+                                        <span className="text-right">$450+</span>
+                                    </div>
+                                    <div className="flex justify-between items-center opacity-60 px-2">
+                                        <span>📜 DOC LEGALIZATION</span>
+                                        <span className="text-right">~$100</span>
+                                    </div>
+                                    <div className="flex justify-between items-center opacity-60 px-2">
+                                        <span>🎓 TEFL (IF NEEDED)</span>
+                                        <span className="text-right">$50 - $180</span>
+                                    </div>
+
+                                    <div className="border-t-2 border-[#FF4A22] pt-3 mt-4 flex justify-between items-center text-[#FF4A22] font-dela text-sm">
+                                        <span>EST. TOTAL NEEDED</span>
+                                        <span>~$1,850 - $2,900</span>
+                                    </div>
+
+                                    <div className="mt-6 pt-4 border-t border-white/20">
+                                        <p className="mb-3 italic text-[9px] opacity-60 uppercase text-center">Later costs (deducted from future salary)</p>
+                                        <div className="grid grid-cols-2 gap-2 text-[9px] opacity-50">
+                                            <div className="bg-white/5 p-2 text-center rounded">📄 WORK PERMIT (~$275)</div>
+                                            <div className="bg-white/5 p-2 text-center rounded">🆔 RESIDENCE CARD (~$72)</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
