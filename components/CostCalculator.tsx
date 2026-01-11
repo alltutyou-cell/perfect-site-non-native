@@ -257,8 +257,8 @@ const CostCalculator: React.FC = () => {
                                     <div className="flex justify-between items-center bg-white/5 p-2 rounded">
                                         <span>🎟️ UP2U SERVICE FEE</span>
                                         <div className="text-right">
-                                            <span>$600</span>
-                                            <span className="block text-[8px] opacity-60 font-normal">($300 upfront + $300 when hired)</span>
+                                            <span>$750</span>
+                                            <span className="block text-[8px] opacity-60 font-normal">($375 upfront + $375 when hired)</span>
                                         </div>
                                     </div>
 
