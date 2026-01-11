@@ -136,7 +136,7 @@ const CostCalculator: React.FC = () => {
                                     onChange={(e) => setSalary(Number(e.target.value))}
                                     className="w-full border-2 border-black p-3 font-dela text-lg focus:bg-[#F8F0DD] outline-none"
                                 />
-                                <p className="text-[9px] mt-1 opacity-50 font-bold">Avg: $1,100-$2,100</p>
+                                <p className="text-[9px] mt-1 opacity-50 font-bold">Avg: $1,200-$2,100</p>
                             </div>
                             <div>
                                 <label className="text-[10px] font-bold uppercase mb-1 block">Rent ($)</label>
