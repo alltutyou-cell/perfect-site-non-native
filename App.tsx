@@ -61,34 +61,16 @@ const App: React.FC = () => {
     window.scrollTo(0, 0);
   };
 
-  if (path === '/') {
-    return <QuizPage />; // Defaulting to QuizPage as per remote, or should I default to Landing? 
-    // The remote had QuizPage as default index. I should probably respect that if it's the live funnel entry point.
-    // But the user was working on a "Landing Page" in my session.
-    // Let's check if the remote `QuizPage` leads to the landing page.
-    // For safety, I'll keep the remote's logic: if path is '/' return <QuizPage />.
-  }
 
-  // However, the user's "Landing Page" was likely what I was editing in the main return.
-  // In the remote, the main landing page was likely at '/guide' or similar?
-  // Let's look at the remote conflict again.
-  // Remote: if (path === '/') return <QuizPage />;
-  // Remote: ... imports ...
-  // Remote: ... return ( <div> ... <Hero /> ... )
-  // Wait, the remote `return` (lines 124+) is NOT inside an `if`. 
-  // It's the default return if no other path matches.
-  // So if path is '/', it shows QuizPage.
-  // If path is NOT '/', and not '/thankyou' etc, it shows the Landing Page (Hero, etc).
-  // So likely the URL for the landing page is NOT '/'.
-  // This is confusing. 
-  // Maybe the QuizPage *is* the new home.
-  // But I want to access my Studio.
+  if (path === '/quiz') {
+    return <QuizPage />;
+  }
 
   if (path === '/studio') {
     return (
       <>
         <div className="bg-[#FF4A22] text-white text-[10px] font-bold text-center py-1 uppercase">
-          DEMO MODE: Viewing Member-Only Portal &bull; <button onClick={() => navigate('/landing')} className="underline hover:no-underline">Return to Landing Page</button>
+          DEMO MODE: Viewing Member-Only Portal &bull; <button onClick={() => navigate('/')} className="underline hover:no-underline">Return to Home</button>
         </div>
         <StudioDashboard />
       </>
@@ -156,7 +138,6 @@ const App: React.FC = () => {
       <Hero />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="reveal-on-scroll"><section className="my-20"><ProfileEvaluator /></section></div>
         <div className="reveal-on-scroll"><Testimonials /></div>
         <div className="reveal-on-scroll"><OpportunitySection /></div>
         <div className="reveal-on-scroll"><GuideMockup /></div>
