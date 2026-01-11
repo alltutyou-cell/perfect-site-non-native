@@ -47,10 +47,33 @@ const ThankYouPage: React.FC = () => {
                         <div className="space-y-8">
                             <div>
                                 <div className="font-dela text-xs opacity-30 mb-2">STEP 01</div>
-                                <h4 className="font-dela text-lg mb-4">DOWNLOAD YOUR GUIDE</h4>
-                                <a href="https://drive.google.com/drive/folders/1lZGQ3dXIPmdMtpHG8wqH4tkieofL1xTJ?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-block bg-black text-white px-6 py-3 font-dela text-sm sticker-shadow hover:translate-x-1 hover:translate-y-1 transition-all">
-                                    → DOWNLOAD NOW
-                                </a>
+                                <h4 className="font-dela text-lg mb-4">DOWNLOAD YOUR FILES</h4>
+
+                                <div className="space-y-3">
+                                    {/* Main Guide */}
+                                    <a href="https://drive.google.com/file/d/1lXOyq-etGyx_pTDAFj-YOR7Ce6XE0z20/view?usp=share_link" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-black text-white px-4 py-3 font-dela text-xs sticker-shadow hover:translate-x-1 hover:translate-y-1 transition-all group">
+                                        <span>📘 MAIN GUIDE</span>
+                                        <span className="opacity-50 group-hover:opacity-100">→</span>
+                                    </a>
+
+                                    {/* Bonus 1 */}
+                                    <a href="https://drive.google.com/file/d/1RHmcxfbO01UV-68oVQpQ-7liR4Wvm_Bw/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-[#FF4A22] text-white px-4 py-3 font-dela text-xs sticker-shadow hover:translate-x-1 hover:translate-y-1 transition-all group">
+                                        <span>🎁 BONUS #1: Interview Cheat Sheet</span>
+                                        <span className="opacity-50 group-hover:opacity-100">→</span>
+                                    </a>
+
+                                    {/* Bonus 2 */}
+                                    <a href="https://drive.google.com/file/d/1jS3wnhUeQh_XsI_W_k01No4YWMoYIeV3/view?usp=share_link" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-[#FF4A22] text-white px-4 py-3 font-dela text-xs sticker-shadow hover:translate-x-1 hover:translate-y-1 transition-all group">
+                                        <span>🎁 BONUS #2: Cost Calculator</span>
+                                        <span className="opacity-50 group-hover:opacity-100">→</span>
+                                    </a>
+
+                                    {/* Bonus 3 */}
+                                    <a href="https://drive.google.com/file/d/1_lsn_LmXB_w-rvcI0-0yBG-Frlr6PgdQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-[#FF4A22] text-white px-4 py-3 font-dela text-xs sticker-shadow hover:translate-x-1 hover:translate-y-1 transition-all group">
+                                        <span>🎁 BONUS #3: First Week Guide</span>
+                                        <span className="opacity-50 group-hover:opacity-100">→</span>
+                                    </a>
+                                </div>
                             </div>
 
                             <div>
